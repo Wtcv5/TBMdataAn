@@ -61,3 +61,21 @@ python -u analysis/report_validation.py             # 按预设规则机械判�
 实验读取基线生成的`outputs/datasets/`和`outputs/canonical/`；验证和测试窗口与基线完全相同，训练只用训练期窗口，模型选择只用验证窗口，未来状态只用于事后统计，不进入特征。
 结果写入`outputs/validation/`；逐窗口预测、真值与未来状态写入`outputs/validation_predictions/`，不纳入Git。
 不要同时运行两个实验进程：每个进程占4个线程，超额订阅会使拟合慢百倍以上。
+
+## P0 可信机器与数据源清单
+
+路线图第一步：解决跨机器数据重合、来源和单位问题。报告见[P0可信机器与数据源清单](outputs/P0可信机器与数据源清单.md)，输出在`outputs/p0/`。脚本只读原始CSV，依次运行：
+
+```powershell
+python -u analysis/p0_file_provenance.py   # 逐文件指纹：里程计数器、比值、采样、行哈希（行哈希缓存在outputs/p0_cache，不纳入Git）
+python -u analysis/p0_counter_events.py    # 里程计数器跳变
+python -u analysis/p0_trust_list.py        # 副本、外来行、单位检验，生成trusted_sources.csv和trusted_machines.csv
+python -u analysis/p0_tbm9_regime.py       # TBM9转速列的证据
+python -u analysis/p0_copy_columns.py      # 副本文件的逐列比较
+python -u analysis/p0_near_duplicates.py   # 相同时间戳的近重复筛查（需要audit_data.py写出的outputs/canonical）
+python -u analysis/smoke_test_p0.py        # 合成数据自检，无需原始数据
+```
+
+每个文件得到一个状态（`trusted`、`flagged`、`repair`、`signal_invalid`、`truncate`、`exclude`），判定规则和阈值写在`p0_trust_list.py`开头。
+清单是文件级和行级的，不改动原始文件；基线和验证实验目前仍使用旧的“核心列相同的文件双方一起隔离”的处理，要到P5才按新清单重跑。
+
