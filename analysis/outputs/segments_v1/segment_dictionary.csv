@@ -1,0 +1,48 @@
+﻿name,dtype,unit,description
+segment_id,str,,"Machine and segment number, e.g. TBM9-00123"
+machine,str,,
+seg_no,int,,Number of the segment within the machine series; the value of seg_no in labels/<machine>.parquet
+stream,str,,Data stream of the first row
+start,time,,Time of the first row
+end,time,,Time of the last row
+rows,int,,
+duration_s,float,s,end minus start
+dt_median_s,float,s,Median interval between the readings inside the segment
+ref_source,str,,"Where the boring flag of the rows comes from, the most common source in the segment: state_boring, state_thrust or signal"
+left_edge,str,,"What bounds the segment before it: state_change (the flag turned on, previous reading within max_gap_s), pause (a stretch of at least interrupt_s with the flag on and the thrust off was cut away), hole_boring (a reading gap above max_gap_s next to a boring row), hole_other (a gap next to a row that is not boring: the true start may lie in the gap), series_edge (first row of the machine series)"
+right_edge,str,,"The same after the segment: state_change, pause, hole_boring, hole_other or series_edge (last row of the series)"
+left_censored,bool,,The left edge is neither a state_change nor a pause: the true start is not observed
+right_censored,bool,,The right edge is neither a state_change nor a pause: the true end is not observed
+gap_before_s,float,s,"Length of the gap before the first row, for hole edges"
+gap_after_s,float,s,"Length of the gap after the last row, for hole edges"
+seg_class,str,,"blip (shorter than blip_s or without an active row), short (shorter than long_s), long"
+active_rows,int,,"Rows with F, T, n and v all above zero"
+active_share,float,,active_rows / rows
+valid_share,float,,Share of the rows with valid_core
+lead_inactive_s,float,s,Time from the first row to the first active row
+trail_inactive_s,float,s,Time from the last active row to the last row
+max_inactive_s,float,s,Longest spell of rows that are not active between the first and the last active row
+v_all_med,float,mm/min,"Median advance speed over all rows, zeros included, invalid rows left out"
+stalled,bool,,v_all_med below stall_v: flag on and thrust on but almost no advance
+F_med,float,as exported,Median over the active rows
+T_med,float,as exported,Median over the active rows
+n_med,float,rpm,Median over the active rows
+v_med,float,mm/min,Median over the active rows
+adv_v_m,float,m,Integral of the valid advance speed over the segment (reading intervals capped at max_gap_s)
+counter,str,,"Position counter used for adv_counter_m: chainage, cutter_mileage or ring"
+adv_counter_m,float,m,Absolute difference between the last and the first valid counter reading in the segment (counter steps are 0.1 to 1 m)
+phase_status,str,,"ok (steady phase found), not_long, few_rows (long but fewer than phase_min_rows readings), few_valid (valid_share below valid_min), no_steady (no positive steady level or no run of readings at the level)"
+steady_start,time,,Time of the first steady reading
+steady_end,time,,Time of the last steady reading
+ramp_s,float,s,"steady_start minus start; empty where the left edge hides the start (hole_boring, series_edge) or there is no steady phase"
+steady_s,float,s,steady_end minus steady_start
+end_s,float,s,end minus steady_end; empty where the right edge is hidden or the stretch is longer than end_max_s
+tail_s,float,s,end minus steady_end whether or not it is named an end phase
+steady_ok_share,float,,Share of the steady readings in which the smoothed thrust and advance speed reach their share of the segment level
+F_level,float,as exported,Steady level of the thrust: median over the middle half of the segment
+T_level,float,as exported,Steady level of the torque
+v_level,float,mm/min,Steady level of the advance speed
+F_steady,float,as exported,Median thrust over the steady rows
+T_steady,float,as exported,Median torque over the steady rows
+n_steady,float,rpm,Median cutterhead speed over the steady rows
+v_steady,float,mm/min,Median advance speed over the steady rows

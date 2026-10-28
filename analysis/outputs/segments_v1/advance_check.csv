@@ -1,0 +1,6 @@
+﻿machine,counter,counter_step_m,long_segments_valid,counter_moved_3_steps,ratio_p10,ratio_p25,ratio_p50,ratio_p75,ratio_p90,within_20_percent,sum_speed_integral_m,sum_counter_m,sum_speed_integral_all_long_m,sum_counter_all_long_m
+TBM5,cutter_mileage,0.1,1594,879,0.6518,0.9194,1.0083,1.09,1.2183,0.7463,797.027,809.2,1113.968,839.3
+TBM6,cutter_mileage,1.0,1279,5,,,,,,,9.2,25.0,1096.155,860.9
+TBM8,chainage,0.1,501,416,0.8988,0.9862,1.032,1.0838,1.2173,0.875,493.204,479.3,525.071,485.6
+TBM9,chainage,1.0,2815,89,0.0172,0.0355,0.0583,0.0934,0.1434,0.0,80.383,1228.0,2396.485,3353.0
+TBM10,chainage,1.0,2348,1,,,,,,,1.221,9.0,1746.716,1575.0

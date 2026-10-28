@@ -91,3 +91,18 @@ python -u analysis/smoke_test_p1.py    # 合成数据自检，无需原始数据
 
 v1只改动三类东西：排除P0判定的副本和外来行、丢弃整行完全相同的重复行、按默认处理修复TBM9等机器的转速列（原值保留在`n_raw`）。其余读入的值与`canonical`缓存逐值一致。异常值只标记不删除，默认筛选是`valid_core`。
 
+## 连续掘进段与阶段划分（P2）
+
+路线图第三步：建立连续掘进段及阶段划分。报告见[P2分段与阶段划分报告](outputs/P2分段与阶段划分报告.md)。输入是v1（`outputs/standard_v1/`），输出在`outputs/segments_v1/`：段表、段表字典、汇总、参数敏感性、推进量对照、人工抽样验证包，以及每台机器一个逐行标签的parquet文件（不纳入Git，约10秒重建，逐字节一致）。
+
+```powershell
+python -u analysis/p2_segment.py       # 读v1，写 outputs/segments_v1/（--machines TBM8,TBM9 可只建部分机器）
+python -u analysis/p2_checks.py        # 间隔限、停顿限和阶段参数的敏感性，推进速度积分与里程计数器对照
+python -u analysis/p2_review.py        # 分层抽样98个段，写抽样表、figures.pdf和答题说明（--png 目录 同时写每段一张PNG）
+python -u analysis/p2_verify.py        # 72项检查：表与标签互相一致、与v1逐行对应、独立重算分段和稳定阶段
+python -u analysis/smoke_test_p2.py    # 合成数据自检，无需原始数据，含三种篡改必须被验证脚本发现
+python -u analysis/p2_review_score.py --sheet outputs/segments_v1/review/<填好的文件>.csv
+```
+
+规则和参数在`p2_segment.py`开头的`PARAMS`并写入`manifest.json`。一个段是机器自己的掘进状态为开的连续行（TBM5在2023年前半段取推进工作状态等于3，两个状态都缺的行取信号），读数间隔不超过`max_gap_s`，且没有推力不大于0达`interrupt_s`的行；长段（≥`long_s`）按推力和推进速度达到本段稳定水平的90%和80%划分上升、稳定、下降。阶段码：0段外、1上升、2稳定、3下降、4段内但未命名阶段；运行状态：0掘进、1刀盘在转而不掘进、2刀盘不转、3转速缺失。标签与v1行序相同，`pd.concat([v1, labels[['seg_no','phase','op_state']]], axis=1)`即可使用。
+

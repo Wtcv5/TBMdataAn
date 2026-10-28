@@ -1,0 +1,4 @@
+﻿name,dtype,description
+seg_no,int32,"Segment number within the machine series (index into segments.csv, seg_no); -1 outside every segment"
+phase,int8,"0 outside a segment, 1 ramp, 2 steady, 3 end, 4 inside a segment without a named phase (blip, short, no steady level found, too few valid rows, or an edge hidden by a data hole)"
+op_state,int8,"0 boring (inside a segment), 1 cutterhead turning without boring, 2 cutterhead not turning, 3 cutterhead speed missing"

@@ -10,6 +10,7 @@
 /analysis/outputs/validation_predictions/
 /analysis/outputs/p0_cache/
 /analysis/outputs/standard_v1/*.parquet
+/analysis/outputs/segments_v1/labels/
 
 # Local Python environments, caches and editor settings.
 __pycache__/

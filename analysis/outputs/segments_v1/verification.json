@@ -1,0 +1,367 @@
+{
+ "passed": 72,
+ "total": 72,
+ "all_passed": true,
+ "checks": [
+  {
+   "check": "the parameters of the manifest are those of the code",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "standard time series v1 is the one the labels were built from",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "segments.csv is the file of the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the segment dictionary names every column of segments.csv",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "segment ids are unique and numbered 0.. within each machine",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "every segment has a class, an edge on each side and a status",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "class follows from duration and activity",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "censored means the edge is neither a state change nor a pause",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "phase status: ok only for long segments, and then with a steady start and end",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the inactive stretches at the start and end fit into the segment, and a segment without an active row is inactive throughout",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "stalled follows from the median advance speed",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: label file matches the manifest (rows and column checksums)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: labels are row for row the standard series (time, file, row)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: every segment is one block of consecutive rows, in order, as many as the table says",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: start and end times of the table are the times of the first and last row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: operating state 0 exactly inside segments",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: phase 0 exactly outside segments, 1 to 4 inside",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: steady, ramp and end rows follow the steady start and end of the table; phases never run backwards",
+   "passed": true,
+   "detail": "1898 phased segments"
+  },
+  {
+   "check": "TBM5: segments without phases carry only the code 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: an independent run-length re-derivation finds the same segments",
+   "passed": true,
+   "detail": "3518 vs 3518"
+  },
+  {
+   "check": "TBM5: no reading gap above 60 s inside a segment",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: no segment holds a stretch of 120 s or more with the thrust off",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: an independent windowed re-derivation of the steady rows agrees on 300 sampled segments",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6: label file matches the manifest (rows and column checksums)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: labels are row for row the standard series (time, file, row)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: every segment is one block of consecutive rows, in order, as many as the table says",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: start and end times of the table are the times of the first and last row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: operating state 0 exactly inside segments",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: phase 0 exactly outside segments, 1 to 4 inside",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: steady, ramp and end rows follow the steady start and end of the table; phases never run backwards",
+   "passed": true,
+   "detail": "1334 phased segments"
+  },
+  {
+   "check": "TBM6: segments without phases carry only the code 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: an independent run-length re-derivation finds the same segments",
+   "passed": true,
+   "detail": "2536 vs 2536"
+  },
+  {
+   "check": "TBM6: no reading gap above 60 s inside a segment",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: no segment holds a stretch of 120 s or more with the thrust off",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: an independent windowed re-derivation of the steady rows agrees on 300 sampled segments",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8: label file matches the manifest (rows and column checksums)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: labels are row for row the standard series (time, file, row)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: every segment is one block of consecutive rows, in order, as many as the table says",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: start and end times of the table are the times of the first and last row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: operating state 0 exactly inside segments",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: phase 0 exactly outside segments, 1 to 4 inside",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: steady, ramp and end rows follow the steady start and end of the table; phases never run backwards",
+   "passed": true,
+   "detail": "501 phased segments"
+  },
+  {
+   "check": "TBM8: segments without phases carry only the code 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: an independent run-length re-derivation finds the same segments",
+   "passed": true,
+   "detail": "658 vs 658"
+  },
+  {
+   "check": "TBM8: no reading gap above 60 s inside a segment",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: no segment holds a stretch of 120 s or more with the thrust off",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: an independent windowed re-derivation of the steady rows agrees on 300 sampled segments",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9: label file matches the manifest (rows and column checksums)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: labels are row for row the standard series (time, file, row)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: every segment is one block of consecutive rows, in order, as many as the table says",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: start and end times of the table are the times of the first and last row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: operating state 0 exactly inside segments",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: phase 0 exactly outside segments, 1 to 4 inside",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: steady, ramp and end rows follow the steady start and end of the table; phases never run backwards",
+   "passed": true,
+   "detail": "2920 phased segments"
+  },
+  {
+   "check": "TBM9: segments without phases carry only the code 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: an independent run-length re-derivation finds the same segments",
+   "passed": true,
+   "detail": "4785 vs 4785"
+  },
+  {
+   "check": "TBM9: no reading gap above 60 s inside a segment",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: no segment holds a stretch of 120 s or more with the thrust off",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: an independent windowed re-derivation of the steady rows agrees on 300 sampled segments",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10: label file matches the manifest (rows and column checksums)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: labels are row for row the standard series (time, file, row)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: every segment is one block of consecutive rows, in order, as many as the table says",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: start and end times of the table are the times of the first and last row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: operating state 0 exactly inside segments",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: phase 0 exactly outside segments, 1 to 4 inside",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: steady, ramp and end rows follow the steady start and end of the table; phases never run backwards",
+   "passed": true,
+   "detail": "2355 phased segments"
+  },
+  {
+   "check": "TBM10: segments without phases carry only the code 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: an independent run-length re-derivation finds the same segments",
+   "passed": true,
+   "detail": "3672 vs 3672"
+  },
+  {
+   "check": "TBM10: no reading gap above 60 s inside a segment",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: no segment holds a stretch of 120 s or more with the thrust off",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: an independent windowed re-derivation of the steady rows agrees on 300 sampled segments",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "state consistency: boring rows minus paused rows equal the rows inside segments",
+   "passed": true,
+   "detail": "1027720 rows"
+  }
+ ]
+}

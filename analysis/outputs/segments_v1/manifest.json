@@ -1,0 +1,189 @@
+{
+ "parameters": {
+  "max_gap_s": 60.0,
+  "interrupt_s": 120.0,
+  "blip_s": 60.0,
+  "long_s": 300.0,
+  "phase_min_rows": 12,
+  "valid_min": 0.9,
+  "rho_F": 0.9,
+  "rho_T": 0.0,
+  "rho_v": 0.8,
+  "hold_rows": 3,
+  "smooth_rows": 5,
+  "trail_s": 300.0,
+  "end_max_s": 300.0,
+  "steady_from": 0.25,
+  "steady_to": 0.75,
+  "stall_v": 2.0,
+  "n_rotating": 0.5
+ },
+ "phase_codes": {
+  "none": 0,
+  "ramp": 1,
+  "steady": 2,
+  "end": 3,
+  "unassigned": 4
+ },
+ "op_state_codes": {
+  "boring": 0,
+  "rotating": 1,
+  "stopped": 2,
+  "unknown": 3
+ },
+ "source": {
+  "standard_v1_manifest_sha256": "a0830c226968e7ad5118879269e03f844d776f0fcd3b4cc18fb7a823636e8bfa"
+ },
+ "segments": {
+  "file": "segments.csv",
+  "rows": 15169,
+  "sha256": "128863e8ab16fcdb2228b8cf6dc70da06d82ba265c4aba3d81bf19339a692a13"
+ },
+ "machines": {
+  "TBM5": {
+   "file": "labels/TBM5.parquet",
+   "rows": 1872243,
+   "bytes": 11158740,
+   "sha256": "5e34f149d0d9e14a61822e2701252af85bec63e002e8a9712f96ad5aa388fea6",
+   "segments": 3518,
+   "checksums": {
+    "source_id": {
+     "nan": 0,
+     "sum": 1341086144.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 7065147057.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 430856142.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 512742.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 3219738.0
+    }
+   }
+  },
+  "TBM6": {
+   "file": "labels/TBM6.parquet",
+   "rows": 1170209,
+   "bytes": 7350674,
+   "sha256": "156a250ef29645ad8eb33f0ccc2fd2b81c1afd6e573ca699fc5f4d24e5c3f41b",
+   "segments": 2536,
+   "checksums": {
+    "source_id": {
+     "nan": 0,
+     "sum": 1093767313.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 4090534116.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 135984934.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 356792.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 1974144.0
+    }
+   }
+  },
+  "TBM8": {
+   "file": "labels/TBM8.parquet",
+   "rows": 287888,
+   "bytes": 2005908,
+   "sha256": "50a1aa0aad191a866784ddf68645fbe460423c7e3ba00dab0c87e780396175d3",
+   "segments": 658,
+   "checksums": {
+    "source_id": {
+     "nan": 0,
+     "sum": 339913436.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 1101184580.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 47321598.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 246677.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 312860.0
+    }
+   }
+  },
+  "TBM9": {
+   "file": "labels/TBM9.parquet",
+   "rows": 1231797,
+   "bytes": 8984643,
+   "sha256": "6ba6d5627ceb3c123120a3a3dd677f6727071947d261d9e410060da97afdcfeb",
+   "segments": 4785,
+   "checksums": {
+    "source_id": {
+     "nan": 0,
+     "sum": 1672458214.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2790430784.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 588816638.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 535790.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 1883355.0
+    }
+   }
+  },
+  "TBM10": {
+   "file": "labels/TBM10.parquet",
+   "rows": 1004594,
+   "bytes": 7143431,
+   "sha256": "4f71f5e4614481fac2abfdce5e2d0b9a34dcb99e116c968287903428ebcf138f",
+   "segments": 3672,
+   "checksums": {
+    "source_id": {
+     "nan": 0,
+     "sum": 158713766.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2185494280.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 329184553.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 400136.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 1605150.0
+    }
+   }
+  }
+ }
+}

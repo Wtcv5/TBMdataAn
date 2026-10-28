@@ -1,0 +1,8 @@
+﻿machine,ref_source,rows,boring_rows,paused_rows,active_rows,boring_and_active,boring_not_active,active_not_boring,thrust_on_not_boring,active_share_of_boring,boring_share_of_active,advance_m_inside,advance_m_outside,advance_m_outside_with_thrust
+TBM5,state_boring,1080328,133987,5415,116054,116054,17933,0,0,0.86616,1.0,644.14743,23.38408,0.0
+TBM5,state_thrust,791913,123484,113,118087,118087,5397,0,0,0.95629,1.0,745.73352,23.77028,0.0
+TBM5,signal,2,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,0.0
+TBM6,state_boring,1170209,180835,2124,167043,167043,13792,0,0,0.92373,1.0,1178.34318,17.85067,0.0
+TBM8,state_boring,287888,128067,0,127630,127630,437,0,0,0.99659,1.0,530.88565,6.91477,0.0
+TBM9,state_boring,1231797,271718,976,266618,266558,5160,60,68,0.98101,0.99977,2689.98027,0.5191,0.51867
+TBM10,state_boring,1004594,198257,0,195649,195607,2650,42,59,0.98663,0.99979,1836.742,0.33036,0.33036
