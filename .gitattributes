@@ -5,3 +5,4 @@
 *.csv text eol=lf
 *.txt text eol=lf
 *.png binary
+/data/raw/*.zip filter=lfs diff=lfs merge=lfs -text

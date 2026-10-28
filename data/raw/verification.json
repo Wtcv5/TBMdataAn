@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "files": 1532,
+  "source_bytes": 9334685382,
+  "archive_bytes": 1467735336,
+  "verified_content": "SHA-256 of all archives and every decompressed original file",
+  "mode": "verify_only"
+}

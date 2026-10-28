@@ -21,8 +21,8 @@ TBM运行数据审计与初始预测基线。项目检查多设备导出数据�
 
 ## 复现
 
-使用Python 3.11，依赖版本见[requirements.txt](analysis/requirements.txt)。将原始数据放置在项目根目录的`TBMData/TBMData/`，按[分析说明](analysis/README.md)依次运行审计、重复核查、基线、报告和验证脚本。
+使用Python 3.11，依赖版本见[requirements.txt](analysis/requirements.txt)。先按[原始数据说明](data/raw/README.md)下载Git LFS压缩包并运行`python analysis/restore_raw_data.py`，将原始数据还原至`TBMData/TBMData/`；再按[分析说明](analysis/README.md)依次运行审计、重复核查、基线、报告和验证脚本。
 
-仓库包含代码、审计统计、模型指标、报告和图表。原始数据、压缩备份、本地Python环境及生成的Parquet数据集、模型二进制、逐窗口预测缓存不纳入Git；这些派生文件可通过脚本重建。
+仓库包含代码、审计统计、模型指标、报告、图表，以及通过Git LFS保存的全部原始输入无损压缩包和SHA-256清单。解压后的原始目录、重复压缩备份、本地Python环境及生成的Parquet数据集、模型二进制、逐窗口预测缓存不纳入Git；这些派生文件可通过脚本重建。
 
 原始数据的设备编号与真实来源需进一步核对。当前指标使用未经单位转换的导出数值，不应据此推断地质状态、故障风险或最优控制策略。

@@ -3,6 +3,8 @@
 原始数据位于 `../TBMData/TBMData`。脚本不修改原始文件，全部输出写入 `outputs`。
 本项目使用当前已安装的Python环境，依赖版本见 `requirements.txt`。
 
+从GitHub克隆后，先按[原始数据说明](../data/raw/README.md)运行`git lfs pull`和`python analysis/restore_raw_data.py`，以还原完整输入。
+
 从项目根目录运行：
 
 ```powershell
