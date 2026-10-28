@@ -5,7 +5,8 @@ import numpy as np
 import pandas as pd
 from threadpoolctl import threadpool_limits
 from validation_common import (OUT, ART, TARGETS, BASE, LABEL, LEARNED, MAX_TRAIN, STATES, cap, feature_names, save_rows, machine_sets,
-                               draw, fit_models, predict, eval_rows, day_codes, Boot, clean_series, future_state, overlap_partners)
+                               draw, fit_models, predict, eval_rows, day_codes, Boot, clean_series, future_state, overlap_partners,
+                               glitch_thresholds, glitch_flags)
 
 def log(*a): print(*a,flush=True)
 
@@ -318,20 +319,61 @@ def run_d(a):
     save_rows(macro,'D_macro.csv')
     show(paired[paired.machine=='macro'].groupby(['horizon_s','model','target','variant','N']).agg(skill_difference=('skill_difference','mean'),ci_low=('ci_low','first'),ci_high=('ci_high','first')).reset_index())
 
+# ---- experiment E: spike contamination (exploratory) ----------------------------------------------------------------
+
+def run_e(a):
+    """Added after looking at the signal distributions (isolated v spikes of 40-500x the median), before any A-D result existed.
+    How common are spikes, and does the failure come from spiky evaluation windows or from spiky training windows?"""
+    names=feature_names(); prev=[]; rows=[]; boot=Boot()
+    for h in a.horizons:
+        for mid,s in machine_sets(h,a.machines).items():
+            pool,test=s['pool'],s['test']
+            for factor in (5,10,20):
+                thr=glitch_thresholds(pool,factor)
+                for split,f in [('train_pool',pool),('validation',s['validation']),('test',test)]:
+                    prev.append(dict(machine=mid,horizon_s=h,factor=factor,split=split,n=len(f),**{k:float(v.mean()) for k,v in glitch_flags(f,thr).items()}))
+            thr=glitch_thresholds(pool,a.glitch_factor); clean_test=~glitch_flags(test,thr).glitch_any.to_numpy()
+            pool_clean=pool[~glitch_flags(pool,thr).glitch_any.to_numpy()]
+            for tag,fit in [('train_all',cap(pool,MAX_TRAIN)),('train_clean',cap(pool_clean,MAX_TRAIN))]:
+                preds=predict(fit_models(fit,names),test,names); train_glitch=float(glitch_flags(fit,thr).glitch_any.mean())
+                for subset,mask in [('all_windows',np.ones(len(test),bool)),('clean_windows',clean_test)]:
+                    if mask.sum()<50: continue
+                    f=test[mask]; p={k:v[mask] for k,v in preds.items()}; codes=day_codes(f); ref=np.abs(f[LABEL].to_numpy()-f[BASE].to_numpy())
+                    rows+=eval_rows(f,p,dict(experiment='E',machine=mid,horizon_s=h,split='test',train=tag,subset=subset,train_n=len(fit),
+                                             train_glitch_share=train_glitch,test_clean_share=float(clean_test.mean()),glitch_factor=a.glitch_factor))
+                    for k,c in enumerate(TARGETS):
+                        boot.add((h,c,subset),mid,codes,ref[:,k],{f'{tag}#{m}':np.abs(f['y_'+c].to_numpy()-q[:,k]) for m,q in p.items()})
+            log('E',h,mid,f'clean test windows {clean_test.mean():.1%}; clean training pool {len(pool_clean)}/{len(pool)}')
+    save_rows(prev,'E_prevalence.csv'); df=pd.DataFrame(rows)
+    ci=[boot.machine_ci((r.horizon_s,r.target,r.subset),f'{r.train}#{r.model}',r.machine) if r.model!='Persistence' else (np.nan,np.nan) for r in df.itertuples()]
+    df['skill_ci_low']=[c[0] for c in ci]; df['skill_ci_high']=[c[1] for c in ci]; save_rows(df,'E_models.csv')
+    out=[]
+    for (h,model,c,tag,subset),g in df[df.model!='Persistence'].groupby(['horizon_s','model','target','train','subset']):
+        mids=sorted(g.machine.unique()); (lo,hi),k=boot.macro_ci((h,c,subset),f'{tag}#{model}',mids)
+        r=dict(horizon_s=h,model=model,target=c,train=tag,subset=subset,machines=len(mids),macro_skill=g.skill.mean(),positive_machines=int((g.skill>0).sum()),ci_low=lo,ci_high=hi)
+        if tag=='train_clean':      # does training on spike-free windows change the result? paired against training on all windows
+            (dlo,dhi),_=boot.macro_ci((h,c,subset),f'train_clean#{model}',mids,f'train_all#{model}'); r.update(diff_vs_train_all_ci_low=dlo,diff_vs_train_all_ci_high=dhi)
+        out.append(r)
+    summary=save_rows(out,'E_summary.csv')
+    p10=pd.DataFrame(prev); p10=p10[(p10.factor==10)&(p10.split=='test')]
+    show(p10.groupby('horizon_s')[['glitch_hist_F','glitch_hist_T','glitch_hist_v','glitch_target_v','glitch_any']].mean())
+    show(summary[summary.model.isin(['HistGB_delta','HistGB_L1_delta'])],['horizon_s','model','target','train','subset','macro_skill','ci_low','ci_high'])
+
 # ---- command line -------------------------------------------------------------------------------------------------
 
 def ints(text): return [int(x) for x in text.split(',') if x]
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('experiment',choices=['horizon','A','B','C','D','all'])
+    ap.add_argument('experiment',choices=['horizon','A','B','C','D','E','all'])
+    ap.add_argument('--glitch-factor',type=float,default=10.,help='experiment E: spike threshold as a multiple of the training median')
     ap.add_argument('--horizons',type=ints,default=[30,60,120]); ap.add_argument('--machines',type=lambda s:[x for x in s.split(',') if x],default=None)
     ap.add_argument('--ladder',type=ints,default=[1500,6000,24000],help='experiment A training sizes below the full pool')
     ap.add_argument('--seeds',type=ints,default=None,help='training-subset seeds (A default 0,1,2; D default 0,1)')
     ap.add_argument('--sizes',type=ints,default=[6000,24000],help='experiment D matched training sizes')
     a=ap.parse_args(); seeds=a.seeds
     with threadpool_limits(limits=4):
-        for name,fn,default in [('horizon',run_horizon,None),('A',run_a,[0,1,2]),('B',run_b,None),('C',run_c,None),('D',run_d,[0,1])]:
+        for name,fn,default in [('horizon',run_horizon,None),('A',run_a,[0,1,2]),('B',run_b,None),('C',run_c,None),('D',run_d,[0,1]),('E',run_e,None)]:
             if a.experiment in (name,'all'):
                 a.seeds=seeds if seeds is not None else default; start=time.perf_counter(); fn(a); log('FINISHED',name,round(time.perf_counter()-start,1),'s')
 

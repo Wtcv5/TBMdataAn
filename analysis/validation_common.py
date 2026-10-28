@@ -88,6 +88,19 @@ def eval_rows(frame,preds,meta):
                              actual_horizon_mean_s=float(frame.actual_horizon_s.mean()),excess_gt0_share=float((excess>0).mean())))
     return rows
 
+def glitch_thresholds(pool,factor):
+    """Spike threshold per signal: factor x the median of the training pool's origin values. Test statistics are never used."""
+    return {c:factor*float(pool[c+'_lag0'].median()) for c in TARGETS}
+
+def glitch_flags(frame,thresholds):
+    """Spike flags from observed values only: any of the four history observations, or the label, above the threshold."""
+    out={}; hist=np.zeros(len(frame),bool); target=np.zeros(len(frame),bool)
+    for c in TARGETS:
+        h=(frame[[f'{c}_lag{j}' for j in range(4)]]>thresholds[c]).any(axis=1).to_numpy(); t=(frame['y_'+c]>thresholds[c]).to_numpy()
+        out[f'glitch_hist_{c}']=h; out[f'glitch_target_{c}']=t; hist|=h; target|=t
+    out['glitch_hist']=hist; out['glitch_target']=target; out['glitch_any']=hist|target
+    return pd.DataFrame(out,index=frame.index)
+
 def day_codes(frame):
     # Frames are time-ordered, so first-appearance order is calendar order.
     return pd.factorize(frame.origin.dt.floor('D'))[0]

@@ -31,6 +31,7 @@ def synth_directory(rng,cfg,suffix,source0):
     x[rng.random(n)<.001,0]*=3                                   # thrust spikes
     x[run&(rng.random(n)<.002)]=0                                # brief dropouts to zero inside runs
     x[~run]=0; x[idle,2]=3.
+    spike=run&(x[:,3]>0)&(rng.random(n)<.004); x[spike,3]*=rng.uniform(40,300,spike.sum())     # isolated advance-rate glitches
     x[rng.random(n)<.0003,0]=np.nan; x[rng.random(n)<.0002,1]=-5  # invalid observations
     df=pd.DataFrame(x,columns=['F','T','n','v']); df.insert(0,'time',time)
     df['p']=df.v/df.n.replace(0,np.nan); df['n_aux']=df.n
@@ -102,6 +103,14 @@ def checks(root,with_baseline):
     check('D: matched sizes (within vs lomo_all) agree when sources are large enough',(m.groupby(['horizon_s','target_machine','N','seed']).train_n.nunique()==1).all())
     check('D: history span and sampling interval are recorded',d.train_history_span_median_s.notna().all() and d.test_sampling_median_s.notna().all())
     h=pd.read_csv(V/'H_actual_horizon.csv'); check('horizon: excess within the 5 s tolerance',(h.excess_max<=5).all())
+    pv=pd.read_csv(V/'E_prevalence.csv'); em=pd.read_csv(V/'E_models.csv')
+    check('E: spikes are found in the evaluation windows',pv[(pv.factor==10)&(pv.split=='test')].glitch_any.max()>0)
+    share=pv.pivot_table(index=['machine','horizon_s','split'],columns='factor',values='glitch_any')
+    check('E: spike share does not grow with the threshold factor',((share[5]>=share[10]-1e-12)&(share[10]>=share[20]-1e-12)).all())
+    check('E: models trained on cleaned windows saw no spikes, the others did',em[em.train=='train_clean'].train_glitch_share.max()==0 and em[em.train=='train_all'].train_glitch_share.max()>0)
+    n_=em[(em.model=='Persistence')&(em.target=='F')&(em.train=='train_all')].pivot_table(index=['machine','horizon_s'],columns='subset',values='n')
+    check('E: the clean-window subset is smaller than all windows',(n_.clean_windows<n_.all_windows).all())
+    es=pd.read_csv(V/'E_summary.csv'); check('E: paired intervals exist for models trained on cleaned windows',es[es.train=='train_clean'].diff_vs_train_all_ci_low.notna().all())
     if with_baseline:
         bm=pd.read_csv(vc.OUT/'baseline_metrics.csv'); t=bm[(bm.split=='test')&(bm.model!='Persistence')]
         for proto,variant in [('within_machine','within_baseline_replica'),('leave_one_machine_out','lomo_baseline_replica')]:
