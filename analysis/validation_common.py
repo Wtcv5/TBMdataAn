@@ -41,8 +41,11 @@ def overlap_partners():
         out.setdefault(ma,set()).add(mb); out.setdefault(mb,set()).add(ma)
     return out
 
-def machine_sets(h,machines=None):
-    """Eligible machines as in the baseline. Validation/test are the baseline's capped windows; train is the full pool."""
+GLITCH_FACTOR=10.
+
+def machine_sets(h,machines=None,clean_train=False):
+    """Eligible machines as in the baseline. Validation/test are the baseline's capped windows; train is the full pool.
+    clean_train drops training windows with a spike (see glitch_flags) from the pool; validation and test are never filtered."""
     sets={}
     for p in sorted((OUT/'datasets').glob(f'*_{h}s.parquet')):
         mid=p.name.split('_')[0]
@@ -52,6 +55,7 @@ def machine_sets(h,machines=None):
         val=cap(f[f.split=='validation'].copy(),MAX_EVAL).reset_index(drop=True)
         test=cap(f[f.split=='test'].copy(),MAX_EVAL).reset_index(drop=True)
         if min(len(pool),MAX_TRAIN)<300 or len(val)<50 or len(test)<50: continue
+        if clean_train: pool=pool[~glitch_flags(pool,glitch_thresholds(pool,GLITCH_FACTOR)).glitch_any.to_numpy()].reset_index(drop=True)
         sets[mid]=dict(pool=pool,validation=val,test=test)
     return sets
 

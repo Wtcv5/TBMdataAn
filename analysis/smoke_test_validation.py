@@ -103,6 +103,13 @@ def checks(root,with_baseline):
     check('D: matched sizes (within vs lomo_all) agree when sources are large enough',(m.groupby(['horizon_s','target_machine','N','seed']).train_n.nunique()==1).all())
     check('D: history span and sampling interval are recorded',d.train_history_span_median_s.notna().all() and d.test_sampling_median_s.notna().all())
     h=pd.read_csv(V/'H_actual_horizon.csv'); check('horizon: excess within the 5 s tolerance',(h.excess_max<=5).all())
+    hs=pd.read_csv(V/'H_strict_sensitivity.csv'); check('horizon: history-span subsets and the 90th-percentile column are present','history<=train_p90' in set(hs.subset) and 'share_history_longer_than_train_p90' in h)
+    ac=pd.read_csv(V/'A_clean_metrics.csv'); a0=pd.read_csv(V/'A_metrics.csv')
+    pool=lambda d:d[(d.train_config=='N=all')&(d.model=='Persistence')&(d.target=='F')&(d.split=='test')].set_index(['machine','horizon_s']).pool_n
+    check('A clean: training pools lose their spiky windows and nothing else changes size',(pool(ac)<=pool(a0)).all() and (pool(ac)<pool(a0)).any())
+    check('A clean: provenance flag is recorded',bool(ac.clean_train.all()) and not bool(a0.clean_train.any()))
+    summary=(V/'decision_summary.md').read_text(encoding='utf-8')
+    check('decision summary covers every section, including the clean-training and per-machine views',all(k in summary for k in ['## 时间标签核查','## A 训练样本量','（训练池剔除毛刺窗口，敏感性分析）','## B ','## C ','## D ','## E ','## 逐机器视图']))
     pv=pd.read_csv(V/'E_prevalence.csv'); em=pd.read_csv(V/'E_models.csv')
     check('E: spikes are found in the evaluation windows',pv[(pv.factor==10)&(pv.split=='test')].glitch_any.max()>0)
     share=pv.pivot_table(index=['machine','horizon_s','split'],columns='factor',values='glitch_any')
@@ -134,6 +141,8 @@ def main():
         hook='import sys; sys.path.insert(0,sys.argv[1]); import build_baselines as b; b.prepare(); '+('b.train()' if a.with_baseline else '')
         run([sys.executable,'-c',hook,root/'analysis'])
         run([sys.executable,root/'analysis/validation_experiments.py','all','--ladder','500,2000','--seeds','0','--sizes','1000,3000','--horizons','60'])
+        run([sys.executable,root/'analysis/validation_experiments.py','A','--clean-train','--ladder','500,2000','--seeds','0','--horizons','60'])
+        run([sys.executable,root/'analysis/report_validation.py'])
         success=checks(root,a.with_baseline)
     finally:
         if ctx: ctx.cleanup()

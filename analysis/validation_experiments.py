@@ -17,27 +17,29 @@ def show(df,cols=None,digits=3):
 # ---- time labels --------------------------------------------------------------------------------------------------
 
 def run_horizon(a):
-    """Actual forecast interval per machine/horizon/split, and a strict-horizon sensitivity of the baseline models."""
+    """Actual forecast interval per machine/horizon/split, and a strict-horizon sensitivity of the baseline models.
+    The history span (four observations) is not constant either; the exploratory history_* subsets compare test windows whose span
+    lies inside the training distribution (<= its 90th percentile) with longer ones."""
     names=feature_names(); rows=[]; strict=[]
     for h in a.horizons:
         for p in sorted((OUT/'datasets').glob(f'*_{h}s.parquet')):
             mid=p.name.split('_')[0]
             if a.machines and mid not in a.machines: continue
-            f=pd.read_parquet(p); f['excess']=f.actual_horizon_s-h
+            f=pd.read_parquet(p); f['excess']=f.actual_horizon_s-h; train_p90=f[f.split=='train'].age_lag3_s.quantile(.9) if (f.split=='train').any() else np.nan
             for split,g in f.groupby('split'):
                 r=dict(machine=mid,horizon_s=h,split=split,n=len(g),actual_median_s=g.actual_horizon_s.median(),
                        actual_mean_s=g.actual_horizon_s.mean(),excess_p05=g.excess.quantile(.05),excess_p95=g.excess.quantile(.95),
                        excess_max=g.excess.max(),sampling_median_s=g.age_lag1_s.median(),sampling_mean_s=g.age_lag1_s.mean(),
-                       history_span_median_s=g.age_lag3_s.median())
+                       history_span_median_s=g.age_lag3_s.median(),train_span_p90_s=train_p90,share_history_longer_than_train_p90=float((g.age_lag3_s>train_p90).mean()))
                 for lo,hi in [(0,0),(1,2),(3,5)]:
                     m=g[(g.excess>=lo)&(g.excess<=hi)]; tag=f'{lo}' if lo==hi else f'{lo}-{hi}'
                     r[f'share_excess_{tag}s']=len(m)/len(g)
                     for c in TARGETS: r[f'persistence_MAE_{c}_excess_{tag}s']=float(np.abs(m['y_'+c]-m[c+'_lag0']).mean()) if len(m) else np.nan
                 rows.append(r)
         for mid,s in machine_sets(h,a.machines).items():
-            models=fit_models(cap(s['pool'],MAX_TRAIN),names,('Ridge_delta','HistGB_delta'))
-            f=s['test']; preds=predict(models,f,names); excess=(f.actual_horizon_s-h).to_numpy()
-            for tag,mask in [('all',excess>=0),('excess<=1s',excess<=1),('excess==0s',excess==0)]:
+            models=fit_models(cap(s['pool'],MAX_TRAIN),names,LEARNED)
+            f=s['test']; preds=predict(models,f,names); excess=(f.actual_horizon_s-h).to_numpy(); span=f.age_lag3_s.to_numpy(); p90=s['pool'].age_lag3_s.quantile(.9)
+            for tag,mask in [('all',excess>=0),('excess<=1s',excess<=1),('excess==0s',excess==0),('history<=train_p90',span<=p90),('history>train_p90',span>p90)]:
                 if mask.sum()<50: continue
                 strict+=eval_rows(f[mask],{k:v[mask] for k,v in preds.items()},dict(machine=mid,horizon_s=h,split='test',subset=tag))
         log('horizon check done',h)
@@ -49,9 +51,9 @@ def run_horizon(a):
 # ---- experiment A: training-set size ------------------------------------------------------------------------------
 
 def run_a(a):
-    names=feature_names(); rows=[]; boot=Boot(); setsby={}
+    names=feature_names(); rows=[]; boot=Boot(); setsby={}; sfx='_clean' if a.clean_train else ''   # clean: training pool without spiky windows
     for h in a.horizons:
-        sets=setsby[h]=machine_sets(h,a.machines)
+        sets=setsby[h]=machine_sets(h,a.machines,a.clean_train)
         for mid,s in sets.items():
             pool,test=s['pool'],s['test']; codes=day_codes(test); ref=np.abs(test[LABEL].to_numpy()-test[BASE].to_numpy())
             configs=[('baseline_replica',cap(pool,MAX_TRAIN),None)]
@@ -63,7 +65,7 @@ def run_a(a):
                 for split in ['validation','test']:
                     f=s[split]; preds=predict(models,f,names)
                     rows+=eval_rows(f,preds,dict(experiment='A',machine=mid,horizon_s=h,split=split,train_config=tag,train_seed=seed,config_key=f'{tag}#{seed}',
-                                                 train_n=len(fit),pool_n=len(pool),train_days=int(fit.origin.dt.floor('D').nunique())))
+                                                 train_n=len(fit),pool_n=len(pool),train_days=int(fit.origin.dt.floor('D').nunique()),clean_train=a.clean_train))
                     if split=='test':
                         for k,c in enumerate(TARGETS):
                             boot.add((h,c),mid,codes,ref[:,k],{f'{tag}#{seed}#{m}':np.abs(f['y_'+c].to_numpy()-p[:,k]) for m,p in preds.items()})
@@ -90,12 +92,12 @@ def run_a(a):
         else: l=u=np.nan
         lo.append(l);hi.append(u)
     df['skill_ci_low']=lo; df['skill_ci_high']=hi
-    save_rows(df,'A_metrics.csv')
+    save_rows(df,f'A{sfx}_metrics.csv')
     t=df[(df.split=='test')&(df.model!='Persistence')].copy()
     per_machine=t.groupby(['horizon_s','model','target','train_config','machine'],dropna=False).agg(skill=('skill','mean'),train_n=('train_n','mean')).reset_index()
     summary=per_machine.groupby(['horizon_s','model','target','train_config']).agg(machines=('machine','nunique'),macro_skill=('skill','mean'),
             positive_machines=('skill',lambda x:int((x>0).sum())),mean_train_n=('train_n','mean')).reset_index()
-    save_rows(summary,'A_summary.csv'); paired=save_rows(pairs,'A_paired.csv')
+    save_rows(summary,f'A{sfx}_summary.csv'); paired=save_rows(pairs,f'A{sfx}_paired.csv')
     order={'baseline_replica':0,'N=1500':1,'N=6000':2,'N=24000':3,'N=all':9}
     summary['o']=summary.train_config.map(lambda x:order.get(x,5))
     show(summary.sort_values(['horizon_s','model','target','o']).drop(columns='o'),['horizon_s','model','target','train_config','mean_train_n','macro_skill','positive_machines'])
@@ -255,14 +257,16 @@ def compose(pools,total,seed,cutoff=None):
 
 def run_d(a):
     names=feature_names(); manifest=pd.read_csv(OUT/'split_manifest.csv').set_index('machine'); rows=[]; comp=[]; boot=Boot(); partners=overlap_partners()
+    sfx='_clean' if a.clean_train else ''      # clean: training pools without spiky windows, so no baseline replicas
     for h in a.horizons:
-        sets=machine_sets(h,a.machines); spacing={m:float(s['pool'].age_lag1_s.median()) for m,s in sets.items()}
+        sets=machine_sets(h,a.machines,a.clean_train); spacing={m:float(s['pool'].age_lag1_s.median()) for m,s in sets.items()}
         for tgt,ts in sets.items():
             others={m:s['pool'] for m,s in sets.items() if m!=tgt}; same={m:p for m,p in others.items() if abs(spacing[m]-spacing[tgt])<=2}
             unrelated={m:p for m,p in others.items() if m not in partners.get(tgt,set())}
             cutoff=pd.Timestamp(manifest.loc[tgt,'train_end_exclusive']); test=ts['test']; codes=day_codes(test)
             ref=np.abs(test[LABEL].to_numpy()-test[BASE].to_numpy())
-            jobs=[('within_baseline_replica',None,None,cap(ts['pool'],MAX_TRAIN),{tgt:min(len(ts['pool']),MAX_TRAIN)}),
+            jobs=[] if a.clean_train else [
+                  ('within_baseline_replica',None,None,cap(ts['pool'],MAX_TRAIN),{tgt:min(len(ts['pool']),MAX_TRAIN)}),
                   ('lomo_baseline_replica',None,None,pd.concat([cap(p,MAX_TRAIN) for p in others.values()],ignore_index=True),{m:min(len(p),MAX_TRAIN) for m,p in others.items()})]
             for n in a.sizes:
                 for sd in a.seeds:
@@ -280,12 +284,12 @@ def run_d(a):
                                  target_train_end=cutoff,all_train_before_target_cutoff=bool((fit.target_time<cutoff).all())))
                 for split in ['validation','test']:
                     f=ts[split]; preds=predict(models,f,names)
-                    rows+=eval_rows(f,preds,dict(experiment='D',machine=tgt,horizon_s=h,split=split,variant=variant,N=n,seed=sd,train_n=len(fit)))
+                    rows+=eval_rows(f,preds,dict(experiment='D',machine=tgt,horizon_s=h,split=split,variant=variant,N=n,seed=sd,train_n=len(fit),clean_train=a.clean_train))
                     if split=='test':
                         for k,c in enumerate(TARGETS):
                             boot.add((h,c),tgt,codes,ref[:,k],{f'{variant}#{n}#{sd}#{m}':np.abs(f['y_'+c].to_numpy()-p[:,k]) for m,p in preds.items()})
                 log('D',h,tgt,variant,n,sd,'train',len(fit),'seconds',round(time.perf_counter()-start,1))
-    df=pd.DataFrame(rows); save_rows(comp,'D_training_sets.csv')
+    df=pd.DataFrame(rows); save_rows(comp,f'D{sfx}_training_sets.csv')
     paired=[]
     for h in a.horizons:
         mids=sorted(df[df.horizon_s==h].machine.unique())
@@ -306,17 +310,17 @@ def run_d(a):
                                 (lo,hi),k=boot.macro_ci((h,c),f'{variant}#{n}#{sd}#{model}',[p[0] for p in per],f'within#{n}#{sd}#{model}')
                                 paired.append(dict(horizon_s=h,model=model,target=c,variant=variant,N=n,seed=sd,machine='macro',skill_difference=float(np.mean([p[1] for p in per])),
                                                    ci_low=lo,ci_high=hi,machines_in_ci=k,variant_train_n=float(np.mean([p[4] for p in per])),within_train_n=float(np.mean([p[5] for p in per]))))
-    paired=save_rows(paired,'D_paired.csv'); save_rows(df,'D_metrics.csv')
+    paired=save_rows(paired,f'D{sfx}_paired.csv'); save_rows(df,f'D{sfx}_metrics.csv')
     # model-selection rule, identical for every protocol: pick by the target machine's validation MAE, report test
     sel=[]
     for (mach,h,var,n,sd,c),g in df.groupby(['machine','horizon_s','variant','N','seed','target'],dropna=False):
         v=g[g.split=='validation'].set_index('model').MAE; t=g[g.split=='test'].set_index('model')
         pick=choose(v.to_dict(),['Persistence']+LEARNED)
         sel.append(dict(machine=mach,horizon_s=h,variant=var,N=n,seed=sd,target=c,selected=pick,test_skill=t.loc[pick,'skill']))
-    save_rows(sel,'D_selected.csv')
+    save_rows(sel,f'D{sfx}_selected.csv')
     t=df[(df.split=='test')&(df.model!='Persistence')&df.N.notna()]
     macro=t.groupby(['horizon_s','model','target','variant','N']).agg(machines=('machine','nunique'),macro_skill=('skill','mean'),positive_machines=('skill',lambda x:int((x>0).sum())),mean_train_n=('train_n','mean')).reset_index()
-    save_rows(macro,'D_macro.csv')
+    save_rows(macro,f'D{sfx}_macro.csv')
     show(paired[paired.machine=='macro'].groupby(['horizon_s','model','target','variant','N']).agg(skill_difference=('skill_difference','mean'),ci_low=('ci_low','first'),ci_high=('ci_high','first')).reset_index())
 
 # ---- experiment E: spike contamination (exploratory) ----------------------------------------------------------------
@@ -333,8 +337,8 @@ def run_e(a):
                 for split,f in [('train_pool',pool),('validation',s['validation']),('test',test)]:
                     prev.append(dict(machine=mid,horizon_s=h,factor=factor,split=split,n=len(f),**{k:float(v.mean()) for k,v in glitch_flags(f,thr).items()}))
             thr=glitch_thresholds(pool,a.glitch_factor); clean_test=~glitch_flags(test,thr).glitch_any.to_numpy()
-            pool_clean=pool[~glitch_flags(pool,thr).glitch_any.to_numpy()]
-            for tag,fit in [('train_all',cap(pool,MAX_TRAIN)),('train_clean',cap(pool_clean,MAX_TRAIN))]:
+            fit_all=cap(pool,MAX_TRAIN); fit_clean=fit_all[~glitch_flags(fit_all,thr).glitch_any.to_numpy()]    # same sample minus its spiky windows
+            for tag,fit in [('train_all',fit_all),('train_clean',fit_clean)]:
                 preds=predict(fit_models(fit,names),test,names); train_glitch=float(glitch_flags(fit,thr).glitch_any.mean())
                 for subset,mask in [('all_windows',np.ones(len(test),bool)),('clean_windows',clean_test)]:
                     if mask.sum()<50: continue
@@ -343,7 +347,7 @@ def run_e(a):
                                              train_glitch_share=train_glitch,test_clean_share=float(clean_test.mean()),glitch_factor=a.glitch_factor))
                     for k,c in enumerate(TARGETS):
                         boot.add((h,c,subset),mid,codes,ref[:,k],{f'{tag}#{m}':np.abs(f['y_'+c].to_numpy()-q[:,k]) for m,q in p.items()})
-            log('E',h,mid,f'clean test windows {clean_test.mean():.1%}; clean training pool {len(pool_clean)}/{len(pool)}')
+            log('E',h,mid,f'clean test windows {clean_test.mean():.1%}; training windows kept {len(fit_clean)}/{len(fit_all)}')
     save_rows(prev,'E_prevalence.csv'); df=pd.DataFrame(rows)
     ci=[boot.machine_ci((r.horizon_s,r.target,r.subset),f'{r.train}#{r.model}',r.machine) if r.model!='Persistence' else (np.nan,np.nan) for r in df.itertuples()]
     df['skill_ci_low']=[c[0] for c in ci]; df['skill_ci_high']=[c[1] for c in ci]; save_rows(df,'E_models.csv')
@@ -367,6 +371,7 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('experiment',choices=['horizon','A','B','C','D','E','all'])
     ap.add_argument('--glitch-factor',type=float,default=10.,help='experiment E: spike threshold as a multiple of the training median')
+    ap.add_argument('--clean-train',action='store_true',help='experiments A and D: drop spiky windows from the training pools; outputs get a _clean suffix')
     ap.add_argument('--horizons',type=ints,default=[30,60,120]); ap.add_argument('--machines',type=lambda s:[x for x in s.split(',') if x],default=None)
     ap.add_argument('--ladder',type=ints,default=[1500,6000,24000],help='experiment A training sizes below the full pool')
     ap.add_argument('--seeds',type=ints,default=None,help='training-subset seeds (A default 0,1,2; D default 0,1)')

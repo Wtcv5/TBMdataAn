@@ -47,15 +47,17 @@ Excel单独审计，不因它有一百多万行就将它当成一台新机器。
 
 ## 最小验证方案
 
-在设计新模型之前，先检验固定基线为何难以超过持久性：时间标签核查、A训练样本量、B简单基线与验证集选择、C按未来状态分层的事后误差归因、D公平的同机与留一机器比较。
-方案、预设判定规则、局限和输出说明见[最小验证方案与初步诊断](outputs/最小验证方案与初步诊断.md)。
+在设计新模型之前，先检验固定基线为何难以超过持久性：时间标签核查、A训练样本量、B简单基线与验证集选择、C按未来状态分层的事后误差归因、D公平的同机与留一机器比较、E毛刺污染（探索性）。
+方案和预设判定规则见[最小验证方案与初步诊断](outputs/最小验证方案与初步诊断.md)，真实数据上的结果见[最小验证方案实验结果](outputs/最小验证方案实验结果.md)。
 
 ```powershell
 python -u analysis/preliminary_from_aggregates.py   # 仅用已提交汇总，无需原始数据
 python -u analysis/smoke_test_validation.py         # 合成数据自检，无需原始数据
-python -u analysis/validation_experiments.py horizon   # 或 A、B、C、D、all
+python -u analysis/validation_experiments.py all    # 或 horizon、A、B、C、D、E 单独运行
+python -u analysis/validation_experiments.py A --clean-train   # 训练池剔除毛刺的敏感性版本，D同理
+python -u analysis/report_validation.py             # 按预设规则机械判定
 ```
 
 实验读取基线生成的`outputs/datasets/`和`outputs/canonical/`；验证和测试窗口与基线完全相同，训练只用训练期窗口，模型选择只用验证窗口，未来状态只用于事后统计，不进入特征。
 结果写入`outputs/validation/`；逐窗口预测、真值与未来状态写入`outputs/validation_predictions/`，不纳入Git。
-脚本已在合成数据上自检，尚未在真实数据上运行。
+不要同时运行两个实验进程：每个进程占4个线程，超额订阅会使拟合慢百倍以上。
