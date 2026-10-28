@@ -1,0 +1,26 @@
+# Original data and archive backups (supplied separately).
+/TBMData/
+/TBMData.zip
+
+# Reproducible derived datasets, fitted binaries and per-window predictions.
+/analysis/outputs/canonical/
+/analysis/outputs/datasets/
+/analysis/outputs/models/
+/analysis/outputs/predictions/
+
+# Local Python environments, caches and editor settings.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.idea/
+.vscode/
+
+# Local credentials and machine-specific configuration.
+.env
+.env.*
+!.env.example
+.aws/
+.codex/

@@ -1,0 +1,43 @@
+{
+  "python": "3.11.7 | packaged by Anaconda, Inc. | (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "pandas": "2.1.4",
+  "numpy": "1.26.4",
+  "aliases": {
+    "time": [
+      "运行时间-time",
+      "时间"
+    ],
+    "F": [
+      "总推进力",
+      "总推力",
+      "推力"
+    ],
+    "T": [
+      "刀盘转矩",
+      "刀盘扭矩",
+      "扭矩"
+    ],
+    "n": [
+      "刀盘速度",
+      "刀盘实际转速",
+      "转速"
+    ],
+    "v": [
+      "推进速度",
+      "推进速度(mm/M)"
+    ],
+    "p": [
+      "贯入度",
+      "刀盘贯入度"
+    ],
+    "n_aux": [
+      "刀盘转速"
+    ]
+  },
+  "raw_units": "unconfirmed",
+  "machine_identity": "TBM number confirmed by user",
+  "source_policy": "tbm_data*.csv only, excluding codes and common_using; workbook audited separately",
+  "csv_files": 1531,
+  "csv_bytes": 9283669372
+}

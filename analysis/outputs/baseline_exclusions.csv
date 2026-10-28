@@ -1,0 +1,13 @@
+﻿machine,horizon,reason,train,validation,test
+TBM1,30,"requires >=300 train, >=50 validation and >=50 test windows",73,0,0
+TBM2,30,"requires >=300 train, >=50 validation and >=50 test windows",0,2077,0
+TBM3,30,"requires >=300 train, >=50 validation and >=50 test windows",1897,0,0
+TBM4,30,"requires >=300 train, >=50 validation and >=50 test windows",344,0,0
+TBM1,60,"requires >=300 train, >=50 validation and >=50 test windows",73,0,0
+TBM2,60,"requires >=300 train, >=50 validation and >=50 test windows",0,2145,0
+TBM3,60,"requires >=300 train, >=50 validation and >=50 test windows",1889,0,0
+TBM4,60,"requires >=300 train, >=50 validation and >=50 test windows",335,0,0
+TBM1,120,"requires >=300 train, >=50 validation and >=50 test windows",73,0,0
+TBM2,120,"requires >=300 train, >=50 validation and >=50 test windows",0,2100,0
+TBM3,120,"requires >=300 train, >=50 validation and >=50 test windows",1797,0,0
+TBM4,120,"requires >=300 train, >=50 validation and >=50 test windows",315,0,0

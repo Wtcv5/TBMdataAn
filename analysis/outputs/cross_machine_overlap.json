@@ -1,0 +1,22 @@
+[
+  {
+    "machine_a": "TBM10",
+    "machine_b": "TBM9",
+    "matching_active_timestamp_signal_rows": 1175
+  },
+  {
+    "machine_a": "TBM2",
+    "machine_b": "TBM5",
+    "matching_active_timestamp_signal_rows": 41751
+  },
+  {
+    "machine_a": "TBM2",
+    "machine_b": "TBM6",
+    "matching_active_timestamp_signal_rows": 41751
+  },
+  {
+    "machine_a": "TBM5",
+    "machine_b": "TBM6",
+    "matching_active_timestamp_signal_rows": 105649
+  }
+]

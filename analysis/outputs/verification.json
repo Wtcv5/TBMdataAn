@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "dataset_and_prediction_checks": 88,
+  "metric_rows_recomputed": 540,
+  "saved_model_bundles_reloaded": 30,
+  "cross_machine_active_overlap_after_quarantine": 0,
+  "source_csv_read_failures": 0
+}
