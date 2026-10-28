@@ -1,0 +1,16 @@
+{
+  "test": {
+    "settings": 180,
+    "mae_worse_rmse_better": 48,
+    "mae_worse_rmse_worse": 105,
+    "mae_better_rmse_better": 27,
+    "mae_better_rmse_worse": 0
+  },
+  "validation": {
+    "settings": 180,
+    "mae_worse_rmse_better": 70,
+    "mae_worse_rmse_worse": 65,
+    "mae_better_rmse_better": 44,
+    "mae_better_rmse_worse": 1
+  }
+}

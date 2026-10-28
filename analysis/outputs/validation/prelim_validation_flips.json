@@ -1,0 +1,7 @@
+{
+  "settings": 180,
+  "validation_positive": 45,
+  "validation_positive_test_negative": 24,
+  "validation_negative_test_positive": 6,
+  "both_positive": 21
+}

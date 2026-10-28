@@ -7,6 +7,7 @@
 /analysis/outputs/datasets/
 /analysis/outputs/models/
 /analysis/outputs/predictions/
+/analysis/outputs/validation_predictions/
 
 # Local Python environments, caches and editor settings.
 __pycache__/
