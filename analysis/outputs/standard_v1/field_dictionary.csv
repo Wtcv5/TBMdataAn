@@ -1,0 +1,40 @@
+﻿name,dtype,unit,unit_status,description,source_columns
+time,datetime64[ns],,,"Time of the reading as exported; local clock, time zone unconfirmed",运行时间-time / 时间
+machine,category,,,TBM number from the directory name,
+stream,category,,,Directory (and part) the file came from,
+project,category,,,Project named in the directory; 未标明 when it names none,
+file_status,category,,,P0 status of the source file,
+source_id,int16,,,Index of the source file in file_audit.csv / source_files.csv,
+row,int32,,,0-based row number in the source file,
+F,float64,kN,unverified,Total thrust,总推进力 / 总推力 / 推力
+T,float64,kN*m,"unverified (constant multiple of the drive motors, P0)",Cutterhead torque,刀盘转矩 / 刀盘扭矩 / 扭矩
+n,float64,rpm,"consistent with v/p, absolute unit unconfirmed",Cutterhead speed after repair (see n_source),刀盘速度 / 刀盘实际转速 / 转速
+v,float64,mm/min,verified against the position counters (P0),Advance speed,推进速度 / 推进速度(mm/M)
+p,float64,mm/rev,follows from v = p*n,Penetration per revolution,贯入度 / 刀盘贯入度
+n_raw,float64,as exported,,Cutterhead speed exactly as exported; differs from n only where n_source starts with repaired or is unrecoverable,刀盘速度 / 刀盘实际转速 / 转速
+n_source,category,,,"exported, repaired_v_over_p, repaired_drive_speed, unrecoverable or missing",
+state_boring,Int16,0/1,,The machine's own boring flag (TBM8: advance state); empty where the export has none,掘进状态 / 推进状态
+state_cutter,Int16,code,,Cutterhead working state code,刀盘工作状态
+state_thrust,Int16,code,,Thrust working state code,推进工作状态
+state_regrip,Int16,0/1,,Re-gripping state,换步状态
+chainage,float64,m,verified against v (P0),Guide shield head chainage; zero and near-zero readings are NaN,导向盾首里程
+ring,float64,ring (about 1 m),,Guide boring ring count; zero readings are NaN,导向掘进环数
+cutter_mileage,float64,m,verified against v (P0),"Cutterhead mileage of TBM1 to TBM6 (offset by about 735,000 on TBM5 and TBM6); zero readings are NaN",刀盘里程
+drive_speed_med,float32,family specific,not comparable across drive families,Median speed (TBM1-TBM6) or frequency (others) over the drive motors that read above zero,主驱动电机i速度 / Mi电机频率 / i#电机输出频率
+drive_torque_med,float32,family specific,not comparable across drive families,Median torque over the drive motors that read above zero,主驱动电机i扭矩 / Mi电机扭矩 / i#电机扭矩
+drive_motors_on,int8,count,,Drive motors reading above zero,
+dt_prev_s,float32,s,,Seconds since the previous reading of the machine,
+active,bool,,,"F, T, n and v all above zero",
+valid_core,bool,,,"No hard flag: not q_neg, q_core_missing, q_v_high, q_T_high, q_F_high, q_v_invalid_file or q_time_conflict",
+q_time_backward,bool,,,Time is earlier than the previous row of the file,
+q_time_coarse,bool,,,File has timestamps only to the minute (P0),
+q_time_conflict,bool,,,Another reading of the machine has the same timestamp and different values,
+q_neg,bool,,,A core signal is negative,
+q_core_missing,bool,,,"F, T, n or v is empty (also where the export has no such column)",
+q_n_invalid,bool,,,"Exported n is not a rotation speed (above the rpm limit, or as large as the drive-motor speed)",
+q_v_high,bool,,,v above 250 mm/min,
+q_T_high,bool,,,T above 12000,
+q_F_high,bool,,,F above 60000,
+q_pnv_off,bool,,,"p*n/v outside 0.5 to 2 where v, p and n are large enough to be read",
+q_v_invalid_file,bool,,,P0 found v and p of the whole file unusable,
+q_counter_glitch,bool,,,A position counter is off its level at the start of the file (jumps found in P0),

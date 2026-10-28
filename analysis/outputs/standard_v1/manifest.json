@@ -1,0 +1,1809 @@
+{
+ "machines": {
+  "TBM1": {
+   "file": "TBM1.parquet",
+   "rows": 161386,
+   "bytes": 1734056,
+   "sha256": "c1b237174bfdcce7b21683c733879b1de6e23c09993748ae424fd4ebc82795f6",
+   "time_min": "2024-01-01 00:00:03",
+   "time_max": "2024-05-09 21:50:24",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 1
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 2691232.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 608964335.0
+    },
+    "F": {
+     "nan": 137317,
+     "sum": 134201600.0
+    },
+    "T": {
+     "nan": 21228,
+     "sum": 113951320.06999998
+    },
+    "n": {
+     "nan": 0,
+     "sum": 320056.47
+    },
+    "v": {
+     "nan": 0,
+     "sum": 224116.3
+    },
+    "p": {
+     "nan": 0,
+     "sum": 19951.6
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 320056.47
+    },
+    "n_source": {
+     "nunique": 1
+    },
+    "state_boring": {
+     "nan": 24069,
+     "sum": 66869.0
+    },
+    "state_cutter": {
+     "nan": 137317,
+     "sum": 36767.0
+    },
+    "state_thrust": {
+     "nan": 137317,
+     "sum": 21956.0
+    },
+    "state_regrip": {
+     "nan": 161386,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 161386,
+     "sum": 0.0
+    },
+    "ring": {
+     "nan": 161386,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 137317,
+     "sum": 120705625.705
+    },
+    "drive_speed_med": {
+     "nan": 83945,
+     "sum": 17258796.0
+    },
+    "drive_torque_med": {
+     "nan": 83005,
+     "sum": 35116192.5
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 831595.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 11224221.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 73.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 2841.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 158545.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 1.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 2.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 0.0
+    }
+   }
+  },
+  "TBM2": {
+   "file": "TBM2.parquet",
+   "rows": 385943,
+   "bytes": 3665043,
+   "sha256": "ae146af6931a677fd75daa8c039e1d3937d1a217982e94c2ebd4e3cd5810bebf",
+   "time_min": "2023-03-14 08:30:10",
+   "time_max": "2023-04-12 23:59:57",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 122941713.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2897097848.0
+    },
+    "F": {
+     "nan": 374305,
+     "sum": 58600473.6
+    },
+    "T": {
+     "nan": 0,
+     "sum": 318699427.84999996
+    },
+    "n": {
+     "nan": 0,
+     "sum": 410908.45999999985
+    },
+    "v": {
+     "nan": 0,
+     "sum": 320600.7
+    },
+    "p": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 410908.45999999985
+    },
+    "n_source": {
+     "nunique": 1
+    },
+    "state_boring": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "state_cutter": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "ring": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 385943,
+     "sum": 0.0
+    },
+    "drive_speed_med": {
+     "nan": 284265,
+     "sum": 6735546.0
+    },
+    "drive_torque_med": {
+     "nan": 281655,
+     "sum": 77395796.5
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 1298424.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 2561387.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 2253.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 11637.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 7768.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 5916.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 374305.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 127.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 1.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 0.0
+    }
+   }
+  },
+  "TBM3": {
+   "file": "TBM3.parquet",
+   "rows": 444485,
+   "bytes": 4456910,
+   "sha256": "41e9edf5d038d2cffa8e62a4f2f9d9ddef35cec91c50a16f366656c56f39cce0",
+   "time_min": "2023-10-24 15:39:47",
+   "time_max": "2024-10-31 18:49:22",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 3
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 199522597.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 703575656.0
+    },
+    "F": {
+     "nan": 2834,
+     "sum": 1531198760.0
+    },
+    "T": {
+     "nan": 438320,
+     "sum": 5570190.0
+    },
+    "n": {
+     "nan": 4,
+     "sum": 346652.73999999993
+    },
+    "v": {
+     "nan": 3,
+     "sum": 2518006.0
+    },
+    "p": {
+     "nan": 3,
+     "sum": 642007.7000000001
+    },
+    "n_raw": {
+     "nan": 3,
+     "sum": 346827.79999999993
+    },
+    "n_source": {
+     "nunique": 3
+    },
+    "state_boring": {
+     "nan": 444485,
+     "sum": 0.0
+    },
+    "state_cutter": {
+     "nan": 3,
+     "sum": 507496.0
+    },
+    "state_thrust": {
+     "nan": 3,
+     "sum": 407745.0
+    },
+    "state_regrip": {
+     "nan": 444485,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 444485,
+     "sum": 0.0
+    },
+    "ring": {
+     "nan": 444485,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 3,
+     "sum": 2276910002.769
+    },
+    "drive_speed_med": {
+     "nan": 358284,
+     "sum": 127460965.0
+    },
+    "drive_torque_med": {
+     "nan": 356651,
+     "sum": 40931742.0
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 1271762.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 32238575.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 1913.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 6158.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 3.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 1868.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 862.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 8.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 438320.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 1.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 2764.0
+    }
+   }
+  },
+  "TBM4": {
+   "file": "TBM4.parquet",
+   "rows": 49657,
+   "bytes": 574052,
+   "sha256": "b14a2f56411054d61bae030205ce411629148741ea3de1d2c1f0cac2212c26e7",
+   "time_min": "2023-10-24 15:40:02",
+   "time_max": "2023-12-29 23:59:41",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 27897675.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 59478588.0
+    },
+    "F": {
+     "nan": 3,
+     "sum": 194376290.0
+    },
+    "T": {
+     "nan": 48699,
+     "sum": 979850.0
+    },
+    "n": {
+     "nan": 3,
+     "sum": 46295.66
+    },
+    "v": {
+     "nan": 3,
+     "sum": 310350.0
+    },
+    "p": {
+     "nan": 3,
+     "sum": 71798.40000000001
+    },
+    "n_raw": {
+     "nan": 3,
+     "sum": 46295.66
+    },
+    "n_source": {
+     "nunique": 2
+    },
+    "state_boring": {
+     "nan": 49657,
+     "sum": 0.0
+    },
+    "state_cutter": {
+     "nan": 3,
+     "sum": 63441.0
+    },
+    "state_thrust": {
+     "nan": 3,
+     "sum": 37650.0
+    },
+    "state_regrip": {
+     "nan": 49657,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 49657,
+     "sum": 0.0
+    },
+    "ring": {
+     "nan": 49657,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 3,
+     "sum": 238372431.277
+    },
+    "drive_speed_med": {
+     "nan": 39370,
+     "sum": 17028076.5
+    },
+    "drive_torque_med": {
+     "nan": 39127,
+     "sum": 5698273.5
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 144110.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 5732379.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 351.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 952.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 3.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 6.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 48699.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 1576.0
+    }
+   }
+  },
+  "TBM5": {
+   "file": "TBM5.parquet",
+   "rows": 1872243,
+   "bytes": 13726603,
+   "sha256": "199d4af051577e0badd057d15d48b17e41f0c86d7d1585596d1a183a4419cc66",
+   "time_min": "2023-04-15 00:00:07",
+   "time_max": "2024-06-03 22:36:52",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 2
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 1341086144.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 7065147057.0
+    },
+    "F": {
+     "nan": 2,
+     "sum": 4475891100.0
+    },
+    "T": {
+     "nan": 0,
+     "sum": 806263590.0
+    },
+    "n": {
+     "nan": 8,
+     "sum": 1069235.5678008508
+    },
+    "v": {
+     "nan": 2,
+     "sum": 10372996.0
+    },
+    "p": {
+     "nan": 2,
+     "sum": 2797262.900000001
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 1070631.9999999993
+    },
+    "n_source": {
+     "nunique": 3
+    },
+    "state_boring": {
+     "nan": 791915,
+     "sum": 133987.0
+    },
+    "state_cutter": {
+     "nan": 2,
+     "sum": 1701881.0
+    },
+    "state_thrust": {
+     "nan": 1080330,
+     "sum": 703659.0
+    },
+    "state_regrip": {
+     "nan": 791913,
+     "sum": 61943.0
+    },
+    "chainage": {
+     "nan": 1872243,
+     "sum": 0.0
+    },
+    "ring": {
+     "nan": 1872243,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 1043,
+     "sum": -1375091835625.9001
+    },
+    "drive_speed_med": {
+     "nan": 1582385,
+     "sum": 397566521.0
+    },
+    "drive_torque_med": {
+     "nan": 1576663,
+     "sum": 151337107.0
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 4197349.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 35937405.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 234141.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 1865187.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 2128.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 10.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 10.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 1067.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 3873.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 499.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 752.0
+    }
+   }
+  },
+  "TBM6": {
+   "file": "TBM6.parquet",
+   "rows": 1170209,
+   "bytes": 9074387,
+   "sha256": "390073a4de2a276ed01e12af9e807a9785805278be871b7d38a8f9c2e131e34d",
+   "time_min": "2023-04-14 15:28:51",
+   "time_max": "2023-12-29 23:59:50",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 1093767313.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 4090534116.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 3358783140.0
+    },
+    "T": {
+     "nan": 0,
+     "sum": 612402270.0
+    },
+    "n": {
+     "nan": 4,
+     "sum": 809577.8999999999
+    },
+    "v": {
+     "nan": 0,
+     "sum": 6832848.0
+    },
+    "p": {
+     "nan": 0,
+     "sum": 1590566.9000000001
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 809983.8999999999
+    },
+    "n_source": {
+     "nunique": 2
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 180835.0
+    },
+    "state_cutter": {
+     "nan": 0,
+     "sum": 1161919.0
+    },
+    "state_thrust": {
+     "nan": 1170209,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 1170209,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 1170209,
+     "sum": 0.0
+    },
+    "ring": {
+     "nan": 1170209,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 16,
+     "sum": 860471070411.7
+    },
+    "drive_speed_med": {
+     "nan": 971571,
+     "sum": 299330030.0
+    },
+    "drive_torque_med": {
+     "nan": 970175,
+     "sum": 121674763.5
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 2715587.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 22408259.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 167043.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 1168154.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 988.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 4.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 4.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 398.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 665.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 20.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 4218.0
+    }
+   }
+  },
+  "TBM8": {
+   "file": "TBM8.parquet",
+   "rows": 287888,
+   "bytes": 3989322,
+   "sha256": "0c2a8977ed71a32274543a8c1060f23d5130d2df66568ca2dea3e99d258f145a",
+   "time_min": "2024-03-05 15:03:00",
+   "time_max": "2024-11-15 07:54:38",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 1
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 339913436.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 1101184580.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 3877035300.0899997
+    },
+    "T": {
+     "nan": 0,
+     "sum": 486910162.58000004
+    },
+    "n": {
+     "nan": 0,
+     "sum": 796038.5100000001
+    },
+    "v": {
+     "nan": 0,
+     "sum": 3122655.1300000013
+    },
+    "p": {
+     "nan": 0,
+     "sum": 1274122.1600000006
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 796038.5100000001
+    },
+    "n_source": {
+     "nunique": 1
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 128067.0
+    },
+    "state_cutter": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 0,
+     "sum": 273043185913.09995
+    },
+    "ring": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "cutter_mileage": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "drive_speed_med": {
+     "nan": 147640,
+     "sum": 13062861.59013253
+    },
+    "drive_torque_med": {
+     "nan": 147640,
+     "sum": 108022126.80405009
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 1936419.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 22006298.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 127630.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 287888.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 0.0
+    }
+   }
+  },
+  "TBM9": {
+   "file": "TBM9.parquet",
+   "rows": 1231797,
+   "bytes": 20302089,
+   "sha256": "099a67b113899380e768ef5746a1819c589ad7a3d001a063b704970062b28472",
+   "time_min": "2023-09-15 17:03:30",
+   "time_max": "2024-10-28 23:52:50",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 2
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 4
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 1672458214.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2790430784.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 6270797353.157089
+    },
+    "T": {
+     "nan": 0,
+     "sum": 1015366673.0531656
+    },
+    "n": {
+     "nan": 5428,
+     "sum": 1492215.1640248145
+    },
+    "v": {
+     "nan": 0,
+     "sum": 11148712.842726799
+    },
+    "p": {
+     "nan": 0,
+     "sum": 2237223.4396394324
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 11742578.83272903
+    },
+    "n_source": {
+     "nunique": 4
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 271718.0
+    },
+    "state_cutter": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 2032,
+     "sum": 1248647486316.0
+    },
+    "ring": {
+     "nan": 511878,
+     "sum": 2190111685.0827007
+    },
+    "cutter_mileage": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "drive_speed_med": {
+     "nan": 538926,
+     "sum": 45873805.62849309
+    },
+    "drive_torque_med": {
+     "nan": 899869,
+     "sum": 227068340.3387043
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 4894778.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 35362160.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 266618.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 1224675.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 66.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 5428.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 140886.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 1623.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 5.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 6.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 0.0
+    }
+   }
+  },
+  "TBM10": {
+   "file": "TBM10.parquet",
+   "rows": 1004594,
+   "bytes": 15480836,
+   "sha256": "5489f21cc0520af1f56f5cd9841e91f0db02d8e900906806ec8ce2826ef79fec",
+   "time_min": "2023-09-13 17:27:00",
+   "time_max": "2024-11-22 23:49:10",
+   "columns": [
+    "time",
+    "machine",
+    "stream",
+    "project",
+    "file_status",
+    "source_id",
+    "row",
+    "F",
+    "T",
+    "n",
+    "v",
+    "p",
+    "n_raw",
+    "n_source",
+    "state_boring",
+    "state_cutter",
+    "state_thrust",
+    "state_regrip",
+    "chainage",
+    "ring",
+    "cutter_mileage",
+    "drive_speed_med",
+    "drive_torque_med",
+    "drive_motors_on",
+    "dt_prev_s",
+    "active",
+    "valid_core",
+    "q_time_backward",
+    "q_time_coarse",
+    "q_time_conflict",
+    "q_neg",
+    "q_core_missing",
+    "q_n_invalid",
+    "q_v_high",
+    "q_T_high",
+    "q_F_high",
+    "q_pnv_off",
+    "q_v_invalid_file",
+    "q_counter_glitch"
+   ],
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 2
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 3
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 158713766.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2185494280.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 5021463946.355727
+    },
+    "T": {
+     "nan": 0,
+     "sum": 712630524.7431356
+    },
+    "n": {
+     "nan": 21735,
+     "sum": 1074185.7413402654
+    },
+    "v": {
+     "nan": 0,
+     "sum": 14574384.955840291
+    },
+    "p": {
+     "nan": 1,
+     "sum": 2995167.430271082
+    },
+    "n_raw": {
+     "nan": 0,
+     "sum": 1879891.831212632
+    },
+    "n_source": {
+     "nunique": 3
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 198257.0
+    },
+    "state_cutter": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "chainage": {
+     "nan": 2494,
+     "sum": 1017816242439.0
+    },
+    "ring": {
+     "nan": 3512,
+     "sum": 3114437773.9128
+    },
+    "cutter_mileage": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "drive_speed_med": {
+     "nan": 751496,
+     "sum": 32021959.892578416
+    },
+    "drive_torque_med": {
+     "nan": 751475,
+     "sum": 165397206.6512274
+    },
+    "drive_motors_on": {
+     "nan": 0,
+     "sum": 3315051.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 37693330.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 195649.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 966619.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 21735.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 21891.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 2887.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 9.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 7.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 16542.0
+    },
+    "q_counter_glitch": {
+     "nan": 0,
+     "sum": 13.0
+    }
+   }
+  }
+ },
+ "p0_inputs_sha256": {
+  "trusted_sources.csv": "141eb8aa2cedbc2690b40a69a93f7bf0d2ea2a694278db6b4afdbefce677ec3f",
+  "row_exclusions.csv": "5293c4ccf68995e6305dd7d42e3da0df94d3093a1d4791e06306f4c5484c2ba0",
+  "counter_events.csv": "9b134040f5e66c045742794d1244495b7cc571d6ac6009482966dc73a05e1201",
+  "file_provenance.csv": "608adbeb7b7963f874df4f78e66481810497c823229b55916015c5f84b29228f"
+ },
+ "drive_to_n": {
+  "TBM1": 0.0027114539925667,
+  "TBM10": 0.0609999941718148,
+  "TBM2": 0.0610141509433962,
+  "TBM3": 0.0027137653981036,
+  "TBM4": 0.0027137207179799,
+  "TBM5": 0.0027044825920885,
+  "TBM6": 0.0027184466019417,
+  "TBM8": 0.0609393980294236,
+  "TBM9": 0.06099999692063075
+ },
+ "limits": {
+  "rpm": 12.0,
+  "v": 250.0,
+  "T": 12000.0,
+  "F": 60000.0
+ }
+}

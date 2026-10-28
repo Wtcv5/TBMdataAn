@@ -79,3 +79,15 @@ python -u analysis/smoke_test_p0.py        # 合成数据自检，无需原始�
 每个文件得到一个状态（`trusted`、`flagged`、`repair`、`signal_invalid`、`truncate`、`exclude`），判定规则和阈值写在`p0_trust_list.py`开头。
 清单是文件级和行级的，不改动原始文件；基线和验证实验目前仍使用旧的“核心列相同的文件双方一起隔离”的处理，要到P5才按新清单重跑。
 
+## 标准时序数据v1（P1）
+
+路线图第二步：统一字段、时间戳和质量标记。数据卡见[标准时序数据v1数据卡](outputs/标准时序数据v1数据卡.md)。输入是P0的清单（`outputs/p0/`），输出在`outputs/standard_v1/`：每台机器一个parquet文件（不纳入Git，约80秒重建）以及字段字典、列映射、行账目、标记统计、采样与缺口、manifest和校验结果。
+
+```powershell
+python -u analysis/p1_standardize.py   # 读P0清单，写 outputs/standard_v1/（--machines TBM8,TBM9 可只建部分机器）
+python -u analysis/p1_verify.py        # 81项检查：manifest、行账目、时间、标记、转速修复、原始数据抽查、与canonical缓存逐值对比
+python -u analysis/smoke_test_p1.py    # 合成数据自检，无需原始数据
+```
+
+v1只改动三类东西：排除P0判定的副本和外来行、丢弃整行完全相同的重复行、按默认处理修复TBM9等机器的转速列（原值保留在`n_raw`）。其余读入的值与`canonical`缓存逐值一致。异常值只标记不删除，默认筛选是`valid_core`。
+

@@ -1,0 +1,412 @@
+{
+ "passed": 81,
+ "total": 81,
+ "all_passed": true,
+ "checks": [
+  {
+   "check": "P0 inputs are the ones the data was built from",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM2: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM3: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM4: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM5: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM6: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM8: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM9: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "TBM10: row count and column checksums match the manifest",
+   "passed": true,
+   "detail": "file bytes identical"
+  },
+  {
+   "check": "every file reconciles: raw = P0-excluded + invalid time + exact duplicates + kept",
+   "passed": true,
+   "detail": "raw 7628284"
+  },
+  {
+   "check": "kept rows per file equal the rows found in the data",
+   "passed": true,
+   "detail": "6608202 rows"
+  },
+  {
+   "check": "no row comes from a file P0 excluded",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "files absent from the data are exactly the excluded ones",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "truncated files keep only the rows before the cut",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM2: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM2: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM2: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM2: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM3: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM3: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM3: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM3: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM4: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM4: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM4: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM4: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: sorted by time, then file, then row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: dt_prev_s is the time difference to the previous row",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: q_time_conflict marks exactly the repeated timestamps",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: no row repeats another one completely",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM1: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "0 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM1: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM2: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM2: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "0 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM2: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM3: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM3: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "1 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM3: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM4: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM4: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "0 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM4: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "10 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM5: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "4 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM6: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "0 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM8: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "140886 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM9: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: value flags, active and valid_core follow from the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: cutterhead speed repair is consistent with n_source",
+   "passed": true,
+   "detail": "21891 rows repaired or unrecoverable"
+  },
+  {
+   "check": "TBM10: rows of signal_invalid files carry q_v_invalid_file",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "no active reading (time, F, T, n, v) appears in the data of two machines",
+   "passed": true,
+   "detail": "0 shared"
+  },
+  {
+   "check": "rows re-read from the raw exports match (time, F, T, v, p, exported n, boring state)",
+   "passed": true,
+   "detail": "60 files, 8994 values"
+  },
+  {
+   "check": "values equal the audit's canonical caches for every kept row",
+   "passed": true,
+   "detail": "6608202 rows compared"
+  }
+ ]
+}
