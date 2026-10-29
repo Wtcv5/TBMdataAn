@@ -1,0 +1,45 @@
+﻿name,dtype,unit,description,origin
+time,datetime64[ns],,"Time of the reading as exported; local clock, time zone unconfirmed",standard series v1
+machine,category,,TBM number from the directory name,standard series v1
+stream,category,,Directory (and part) the file came from,standard series v1
+project,category,,Project named in the directory; 未标明 when it names none,standard series v1
+file_status,category,,P0 status of the source file,standard series v1
+source_id,int16,,Index of the source file in file_audit.csv / source_files.csv,standard series v1
+row,int32,,0-based row number in the source file,standard series v1
+F,float64,kN,Total thrust,standard series v1
+T,float64,kN*m,Cutterhead torque,standard series v1
+n,float64,rpm,Cutterhead speed after repair (see n_source),standard series v1
+v,float64,mm/min,Advance speed,standard series v1
+p,float64,mm/rev,Penetration per revolution,standard series v1
+n_source,category,,"exported, repaired_v_over_p, repaired_drive_speed, unrecoverable or missing",standard series v1
+state_boring,Int16,0/1,The machine's own boring flag (TBM8: advance state); empty where the export has none,standard series v1
+state_cutter,Int16,code,Cutterhead working state code,standard series v1
+state_thrust,Int16,code,Thrust working state code,standard series v1
+state_regrip,Int16,0/1,Re-gripping state,standard series v1
+dt_prev_s,float32,s,Seconds since the previous reading of the machine,standard series v1
+active,bool,,"F, T, n and v all above zero",standard series v1
+valid_core,bool,,"No hard flag: not q_neg, q_core_missing, q_v_high, q_T_high, q_F_high, q_v_invalid_file or q_time_conflict",standard series v1
+q_time_backward,bool,,Time is earlier than the previous row of the file,standard series v1
+q_time_coarse,bool,,File has timestamps only to the minute (P0),standard series v1
+q_time_conflict,bool,,Another reading of the machine has the same timestamp and different values,standard series v1
+q_neg,bool,,A core signal is negative,standard series v1
+q_core_missing,bool,,"F, T, n or v is empty (also where the export has no such column)",standard series v1
+q_n_invalid,bool,,"Exported n is not a rotation speed (above the rpm limit, or as large as the drive-motor speed)",standard series v1
+q_v_high,bool,,v above 250 mm/min,standard series v1
+q_T_high,bool,,T above 12000,standard series v1
+q_F_high,bool,,F above 60000,standard series v1
+q_pnv_off,bool,,"p*n/v outside 0.5 to 2 where v, p and n are large enough to be read",standard series v1
+q_v_invalid_file,bool,,P0 found v and p of the whole file unusable,standard series v1
+seg_no,int32,,"Number of the P2 segment the row lies in (index into segments_v1/segments.csv, same machine); -1 outside every segment",P2 labels
+phase,int8,,"P2 phase: 0 outside a segment, 1 ramp, 2 steady, 3 end, 4 inside a segment without a named phase",P2 labels
+op_state,int8,,"P2 operating state: 0 boring (inside a segment), 1 cutterhead turning without boring, 2 cutterhead not turning, 3 cutterhead speed missing",P2 labels
+view_boring,bool,,"Row lies in a segment of the continuous-boring view: long, phase_status ok (a steady phase was found) and not stalled",P3
+view_strict,bool,,Row lies in a segment of the continuous-boring view whose two edges are both observed (neither is censored by a data hole or the end of the series),P3
+view_steady,bool,,Row is in the steady phase (phase 2) of a segment of the continuous-boring view,P3
+run_id,int32,,"Number of the run of consecutive valid_core rows, no two neighbours more than 60 s apart, within the machine series; -1 where valid_core is false",P3
+win30_pos,int32,,"Row position (0-based, in this file) of the target of the 30 s window that starts at this row (origin), -1 where no window starts here: the origin is active, the origin and the 3 rows before it and the target row are valid_core rows of one run, and the target is the first reading at or after origin+30 s, at most 5 s late",P3
+win30_level,int8,,"Level of that window: 0 none, 1 full-run view, 2 also continuous-boring view (all rows of the window inside one boring-view segment), 3 also steady view (first history row and target in the steady phase of it)",P3
+win60_pos,int32,,"Row position (0-based, in this file) of the target of the 60 s window that starts at this row (origin), -1 where no window starts here: the origin is active, the origin and the 3 rows before it and the target row are valid_core rows of one run, and the target is the first reading at or after origin+60 s, at most 5 s late",P3
+win60_level,int8,,"Level of that window: 0 none, 1 full-run view, 2 also continuous-boring view (all rows of the window inside one boring-view segment), 3 also steady view (first history row and target in the steady phase of it)",P3
+win120_pos,int32,,"Row position (0-based, in this file) of the target of the 120 s window that starts at this row (origin), -1 where no window starts here: the origin is active, the origin and the 3 rows before it and the target row are valid_core rows of one run, and the target is the first reading at or after origin+120 s, at most 5 s late",P3
+win120_level,int8,,"Level of that window: 0 none, 1 full-run view, 2 also continuous-boring view (all rows of the window inside one boring-view segment), 3 also steady view (first history row and target in the steady phase of it)",P3

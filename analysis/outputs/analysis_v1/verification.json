@@ -1,0 +1,917 @@
+{
+ "passed": 182,
+ "total": 182,
+ "all_passed": true,
+ "checks": [
+  {
+   "check": "the inputs are those the dataset was built from (standard series, P2 labels, segment table)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the window rules of the manifest are those of the code",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the machines are those of the P2 labels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the field dictionary names every column, in order, with a description and its origin",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: file, rows and column checksums are those of the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: columns are the documented ones, with the documented types",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: every row of the standard series is here, in the same order, with the same values in 31 columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: the columns left out are exactly those listed in the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: the P2 labels are copied unchanged",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: time increases strictly",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: the views follow from the segment table (merge on the segment number)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: the rows of the boring view are the rows of its segments, the segments those of the table",
+   "passed": true,
+   "detail": "1895 and 1664 segments"
+  },
+  {
+   "check": "TBM5: run numbers agree with a plain loop",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 30 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 30 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 30 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 30 to 35 s after the origin",
+   "passed": true,
+   "detail": "219181 windows"
+  },
+  {
+   "check": "TBM5, 30 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM5, 30 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM5, 30 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 30 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 30 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 60 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 60 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 60 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 60 to 65 s after the origin",
+   "passed": true,
+   "detail": "219858 windows"
+  },
+  {
+   "check": "TBM5, 60 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM5, 60 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM5, 60 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 60 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 60 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 120 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 120 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 120 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 120 to 125 s after the origin",
+   "passed": true,
+   "detail": "216029 windows"
+  },
+  {
+   "check": "TBM5, 120 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM5, 120 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM5, 120 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 120 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5, 120 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: view summary: rows, share, hours (from the reading intervals) and active rows of the five views agree with the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM5: the hours of the boring and strict view equal the durations in the segment table",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: file, rows and column checksums are those of the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: columns are the documented ones, with the documented types",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: every row of the standard series is here, in the same order, with the same values in 31 columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: the columns left out are exactly those listed in the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: the P2 labels are copied unchanged",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: time increases strictly",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: the views follow from the segment table (merge on the segment number)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: the rows of the boring view are the rows of its segments, the segments those of the table",
+   "passed": true,
+   "detail": "1315 and 1227 segments"
+  },
+  {
+   "check": "TBM6: run numbers agree with a plain loop",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 30 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 30 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 30 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 30 to 35 s after the origin",
+   "passed": true,
+   "detail": "155625 windows"
+  },
+  {
+   "check": "TBM6, 30 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6, 30 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6, 30 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 30 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 30 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 60 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 60 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 60 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 60 to 65 s after the origin",
+   "passed": true,
+   "detail": "154149 windows"
+  },
+  {
+   "check": "TBM6, 60 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6, 60 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6, 60 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 60 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 60 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 120 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 120 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 120 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 120 to 125 s after the origin",
+   "passed": true,
+   "detail": "152561 windows"
+  },
+  {
+   "check": "TBM6, 120 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6, 120 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM6, 120 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 120 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6, 120 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: view summary: rows, share, hours (from the reading intervals) and active rows of the five views agree with the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM6: the hours of the boring and strict view equal the durations in the segment table",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: file, rows and column checksums are those of the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: columns are the documented ones, with the documented types",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: every row of the standard series is here, in the same order, with the same values in 31 columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: the columns left out are exactly those listed in the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: the P2 labels are copied unchanged",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: time increases strictly",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: the views follow from the segment table (merge on the segment number)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: the rows of the boring view are the rows of its segments, the segments those of the table",
+   "passed": true,
+   "detail": "501 and 434 segments"
+  },
+  {
+   "check": "TBM8: run numbers agree with a plain loop",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 30 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 30 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 30 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 30 to 35 s after the origin",
+   "passed": true,
+   "detail": "115671 windows"
+  },
+  {
+   "check": "TBM8, 30 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8, 30 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8, 30 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 30 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 30 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 60 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 60 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 60 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 60 to 65 s after the origin",
+   "passed": true,
+   "detail": "115272 windows"
+  },
+  {
+   "check": "TBM8, 60 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8, 60 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8, 60 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 60 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 60 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 120 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 120 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 120 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 120 to 125 s after the origin",
+   "passed": true,
+   "detail": "60174 windows"
+  },
+  {
+   "check": "TBM8, 120 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8, 120 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM8, 120 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 120 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8, 120 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: view summary: rows, share, hours (from the reading intervals) and active rows of the five views agree with the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM8: the hours of the boring and strict view equal the durations in the segment table",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: file, rows and column checksums are those of the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: columns are the documented ones, with the documented types",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: every row of the standard series is here, in the same order, with the same values in 31 columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: the columns left out are exactly those listed in the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: the P2 labels are copied unchanged",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: time increases strictly",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: the views follow from the segment table (merge on the segment number)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: the rows of the boring view are the rows of its segments, the segments those of the table",
+   "passed": true,
+   "detail": "2897 and 2697 segments"
+  },
+  {
+   "check": "TBM9: run numbers agree with a plain loop",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 30 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 30 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 30 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 30 to 35 s after the origin",
+   "passed": true,
+   "detail": "149715 windows"
+  },
+  {
+   "check": "TBM9, 30 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9, 30 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9, 30 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 30 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 30 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 60 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 60 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 60 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 60 to 65 s after the origin",
+   "passed": true,
+   "detail": "136109 windows"
+  },
+  {
+   "check": "TBM9, 60 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9, 60 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9, 60 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 60 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 60 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 120 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 120 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 120 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 120 to 125 s after the origin",
+   "passed": true,
+   "detail": "124394 windows"
+  },
+  {
+   "check": "TBM9, 120 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9, 120 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM9, 120 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 120 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9, 120 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: view summary: rows, share, hours (from the reading intervals) and active rows of the five views agree with the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM9: the hours of the boring and strict view equal the durations in the segment table",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: file, rows and column checksums are those of the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: columns are the documented ones, with the documented types",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: every row of the standard series is here, in the same order, with the same values in 31 columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: the columns left out are exactly those listed in the manifest",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: the P2 labels are copied unchanged",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: time increases strictly",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: the views follow from the segment table (merge on the segment number)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: the rows of the boring view are the rows of its segments, the segments those of the table",
+   "passed": true,
+   "detail": "2341 and 2178 segments"
+  },
+  {
+   "check": "TBM10: run numbers agree with a plain loop",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 30 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 30 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 30 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 30 to 35 s after the origin",
+   "passed": true,
+   "detail": "97002 windows"
+  },
+  {
+   "check": "TBM10, 30 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10, 30 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10, 30 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 30 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 30 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 60 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 60 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 60 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 60 to 65 s after the origin",
+   "passed": true,
+   "detail": "98780 windows"
+  },
+  {
+   "check": "TBM10, 60 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10, 60 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10, 60 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 60 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 60 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 120 s: the targets are those found the way the committed baseline finds them",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 120 s: levels agree with the running-sum derivation; a window exists exactly where the level is above 0",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 120 s: every window has an active origin, valid rows of one run without a gap above 60 s, and a target 120 to 125 s after the origin",
+   "passed": true,
+   "detail": "91203 windows"
+  },
+  {
+   "check": "TBM10, 120 s: reading the definition row by row gives the stored target and level for 200 windows and 200 active origins without one",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10, 120 s: the samples (features, targets, times) equal the values read directly from the rows for 200 windows",
+   "passed": true,
+   "detail": "0 differ"
+  },
+  {
+   "check": "TBM10, 120 s: the accounting adds up (active rows = rows lost for each reason + windows) and counts the windows of the stored levels",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 120 s: the manifest counts the windows of the three views",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10, 120 s: the window summary agrees with the windows of the stored columns, view by view",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: view summary: rows, share, hours (from the reading intervals) and active rows of the five views agree with the stored columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "TBM10: the hours of the boring and strict view equal the durations in the segment table",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "the views reproduce the numbers of the P2 report: segments, hours and steady rows",
+   "passed": true,
+   "detail": "8949 segments, 3739 h; strict 8200, 3523 h; steady rows 847291 and 801193"
+  },
+  {
+   "check": "the regression against the committed baseline ran: all 9 machines and 3 horizons rebuilt identically",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "a second build reproduces every file byte for byte",
+   "passed": true,
+   "detail": "10 files"
+  }
+ ]
+}

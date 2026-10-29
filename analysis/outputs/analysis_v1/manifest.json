@@ -1,0 +1,1016 @@
+{
+ "windows": {
+  "horizons_s": [
+   30,
+   60,
+   120
+  ],
+  "history_rows": 4,
+  "max_gap_s": 60,
+  "tolerance_s": 5,
+  "origin": "F, T, n and v above zero",
+  "rows_of_a_window": "valid_core, one run",
+  "levels": {
+   "none": 0,
+   "full": 1,
+   "boring": 2,
+   "steady": 3
+  }
+ },
+ "views": {
+  "full": "valid_core rows",
+  "boring": "segments with seg_class long, phase_status ok and not stalled",
+  "strict": "boring view with both segment edges uncensored",
+  "steady": "phase 2 rows of the boring view"
+ },
+ "phase_codes": {
+  "none": 0,
+  "ramp": 1,
+  "steady": 2,
+  "end": 3,
+  "unassigned": 4
+ },
+ "op_state_codes": {
+  "boring": 0,
+  "rotating": 1,
+  "stopped": 2,
+  "unknown": 3
+ },
+ "dropped_from_standard_series": [
+  "n_raw",
+  "chainage",
+  "ring",
+  "cutter_mileage",
+  "drive_speed_med",
+  "drive_torque_med",
+  "drive_motors_on",
+  "q_counter_glitch"
+ ],
+ "source": {
+  "standard_v1_manifest_sha256": "a0830c226968e7ad5118879269e03f844d776f0fcd3b4cc18fb7a823636e8bfa",
+  "segments_v1_manifest_sha256": "532f5676d070bb1eb059f1165b457d7dc410bc86c1f69126bee366d56ebc9794",
+  "segments_sha256": "128863e8ab16fcdb2228b8cf6dc70da06d82ba265c4aba3d81bf19339a692a13"
+ },
+ "machines": {
+  "TBM5": {
+   "file": "TBM5.parquet",
+   "rows": 1872243,
+   "bytes": 16449876,
+   "sha256": "e9432300ce48033b683d6976a47cbee69b501085d4bd198d416c7bc80d4b7e58",
+   "windows": {
+    "30": {
+     "full_run_view": 219181,
+     "boring_view": 208961,
+     "steady_view": 185890
+    },
+    "60": {
+     "full_run_view": 219858,
+     "boring_view": 205812,
+     "steady_view": 181628
+    },
+    "120": {
+     "full_run_view": 216029,
+     "boring_view": 195345,
+     "steady_view": 170919
+    }
+   },
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 2
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 1341086144.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 7065147057.0
+    },
+    "F": {
+     "nan": 2,
+     "sum": 4475891100.0
+    },
+    "T": {
+     "nan": 0,
+     "sum": 806263590.0
+    },
+    "n": {
+     "nan": 8,
+     "sum": 1069235.5678008508
+    },
+    "v": {
+     "nan": 2,
+     "sum": 10372996.0
+    },
+    "p": {
+     "nan": 2,
+     "sum": 2797262.900000001
+    },
+    "n_source": {
+     "nunique": 3
+    },
+    "state_boring": {
+     "nan": 791915,
+     "sum": 133987.0
+    },
+    "state_cutter": {
+     "nan": 2,
+     "sum": 1701881.0
+    },
+    "state_thrust": {
+     "nan": 1080330,
+     "sum": 703659.0
+    },
+    "state_regrip": {
+     "nan": 791913,
+     "sum": 61943.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 35937405.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 234141.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 1865187.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 2128.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 10.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 10.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 1067.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 3873.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 499.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 430856142.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 512742.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 3219738.0
+    },
+    "view_boring": {
+     "nan": 0,
+     "sum": 237827.0
+    },
+    "view_strict": {
+     "nan": 0,
+     "sum": 223914.0
+    },
+    "view_steady": {
+     "nan": 0,
+     "sum": 207976.0
+    },
+    "run_id": {
+     "nan": 0,
+     "sum": 18693183169.0
+    },
+    "win30_pos": {
+     "nan": 0,
+     "sum": 210771380070.0
+    },
+    "win30_level": {
+     "nan": 0,
+     "sum": 614032.0
+    },
+    "win60_pos": {
+     "nan": 0,
+     "sum": 211877269838.0
+    },
+    "win60_level": {
+     "nan": 0,
+     "sum": 607298.0
+    },
+    "win120_pos": {
+     "nan": 0,
+     "sum": 208689589677.0
+    },
+    "win120_level": {
+     "nan": 0,
+     "sum": 582293.0
+    }
+   }
+  },
+  "TBM6": {
+   "file": "TBM6.parquet",
+   "rows": 1170209,
+   "bytes": 11002494,
+   "sha256": "eb8dee65fb0300d5a9b8e417c27c256464a4cc7ccb15267c0a4f3a1368474943",
+   "windows": {
+    "30": {
+     "full_run_view": 155625,
+     "boring_view": 149669,
+     "steady_view": 130576
+    },
+    "60": {
+     "full_run_view": 154149,
+     "boring_view": 146166,
+     "steady_view": 126783
+    },
+    "120": {
+     "full_run_view": 152561,
+     "boring_view": 140380,
+     "steady_view": 120716
+    }
+   },
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 2
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 1093767313.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 4090534116.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 3358783140.0
+    },
+    "T": {
+     "nan": 0,
+     "sum": 612402270.0
+    },
+    "n": {
+     "nan": 4,
+     "sum": 809577.8999999999
+    },
+    "v": {
+     "nan": 0,
+     "sum": 6832848.0
+    },
+    "p": {
+     "nan": 0,
+     "sum": 1590566.9000000001
+    },
+    "n_source": {
+     "nunique": 2
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 180835.0
+    },
+    "state_cutter": {
+     "nan": 0,
+     "sum": 1161919.0
+    },
+    "state_thrust": {
+     "nan": 1170209,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 1170209,
+     "sum": 0.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 22408259.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 167043.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 1168154.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 988.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 4.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 4.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 398.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 665.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 20.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 135984934.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 356792.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 1974144.0
+    },
+    "view_boring": {
+     "nan": 0,
+     "sum": 169463.0
+    },
+    "view_strict": {
+     "nan": 0,
+     "sum": 163300.0
+    },
+    "view_steady": {
+     "nan": 0,
+     "sum": 145830.0
+    },
+    "run_id": {
+     "nan": 0,
+     "sum": 1097197204.0
+    },
+    "win30_pos": {
+     "nan": 0,
+     "sum": 61204260994.0
+    },
+    "win30_level": {
+     "nan": 0,
+     "sum": 435870.0
+    },
+    "win60_pos": {
+     "nan": 0,
+     "sum": 60426838551.0
+    },
+    "win60_level": {
+     "nan": 0,
+     "sum": 427098.0
+    },
+    "win120_pos": {
+     "nan": 0,
+     "sum": 59901743202.0
+    },
+    "win120_level": {
+     "nan": 0,
+     "sum": 413657.0
+    }
+   }
+  },
+  "TBM8": {
+   "file": "TBM8.parquet",
+   "rows": 287888,
+   "bytes": 4819884,
+   "sha256": "7d46e04be4a639353ef52ffb06c465829d2887b82807876dc2c91a0d08123e22",
+   "windows": {
+    "30": {
+     "full_run_view": 115671,
+     "boring_view": 112395,
+     "steady_view": 100974
+    },
+    "60": {
+     "full_run_view": 115272,
+     "boring_view": 110749,
+     "steady_view": 99407
+    },
+    "120": {
+     "full_run_view": 60174,
+     "boring_view": 56316,
+     "steady_view": 50322
+    }
+   },
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 1
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 1
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 339913436.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 1101184580.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 3877035300.0899997
+    },
+    "T": {
+     "nan": 0,
+     "sum": 486910162.58000004
+    },
+    "n": {
+     "nan": 0,
+     "sum": 796038.5100000001
+    },
+    "v": {
+     "nan": 0,
+     "sum": 3122655.1300000013
+    },
+    "p": {
+     "nan": 0,
+     "sum": 1274122.1600000006
+    },
+    "n_source": {
+     "nunique": 1
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 128067.0
+    },
+    "state_cutter": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 287888,
+     "sum": 0.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 22006298.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 127630.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 287888.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 47321598.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 246677.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 312860.0
+    },
+    "view_boring": {
+     "nan": 0,
+     "sum": 126714.0
+    },
+    "view_strict": {
+     "nan": 0,
+     "sum": 117851.0
+    },
+    "view_steady": {
+     "nan": 0,
+     "sum": 114082.0
+    },
+    "run_id": {
+     "nan": 0,
+     "sum": 24743521.0
+    },
+    "win30_pos": {
+     "nan": 0,
+     "sum": 18642318752.0
+    },
+    "win30_level": {
+     "nan": 0,
+     "sum": 329040.0
+    },
+    "win60_pos": {
+     "nan": 0,
+     "sum": 18642370240.0
+    },
+    "win60_level": {
+     "nan": 0,
+     "sum": 325428.0
+    },
+    "win120_pos": {
+     "nan": 0,
+     "sum": 9471563200.0
+    },
+    "win120_level": {
+     "nan": 0,
+     "sum": 166812.0
+    }
+   }
+  },
+  "TBM9": {
+   "file": "TBM9.parquet",
+   "rows": 1231797,
+   "bytes": 18970819,
+   "sha256": "46a9268694b608d7d452e2b9b7d65cb489110f29c8a0d0bb2d9fd42baa661510",
+   "windows": {
+    "30": {
+     "full_run_view": 149715,
+     "boring_view": 136320,
+     "steady_view": 113535
+    },
+    "60": {
+     "full_run_view": 136109,
+     "boring_view": 122130,
+     "steady_view": 101205
+    },
+    "120": {
+     "full_run_view": 124394,
+     "boring_view": 107020,
+     "steady_view": 88565
+    }
+   },
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 2
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 4
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 1672458214.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2790430784.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 6270797353.157089
+    },
+    "T": {
+     "nan": 0,
+     "sum": 1015366673.0531656
+    },
+    "n": {
+     "nan": 5428,
+     "sum": 1492215.1640248145
+    },
+    "v": {
+     "nan": 0,
+     "sum": 11148712.842726799
+    },
+    "p": {
+     "nan": 0,
+     "sum": 2237223.4396394324
+    },
+    "n_source": {
+     "nunique": 4
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 271718.0
+    },
+    "state_cutter": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 1231797,
+     "sum": 0.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 35362160.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 266618.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 1224675.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 66.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 5428.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 140886.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 1623.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 5.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 6.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 588816638.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 535790.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 1883355.0
+    },
+    "view_boring": {
+     "nan": 0,
+     "sum": 253604.0
+    },
+    "view_strict": {
+     "nan": 0,
+     "sum": 242340.0
+    },
+    "view_steady": {
+     "nan": 0,
+     "sum": 213850.0
+    },
+    "run_id": {
+     "nan": 0,
+     "sum": 3298588853.0
+    },
+    "win30_pos": {
+     "nan": 0,
+     "sum": 78877367981.0
+    },
+    "win30_level": {
+     "nan": 0,
+     "sum": 399570.0
+    },
+    "win60_pos": {
+     "nan": 0,
+     "sum": 73845361706.0
+    },
+    "win60_level": {
+     "nan": 0,
+     "sum": 359444.0
+    },
+    "win120_pos": {
+     "nan": 0,
+     "sum": 61832532500.0
+    },
+    "win120_level": {
+     "nan": 0,
+     "sum": 319979.0
+    }
+   }
+  },
+  "TBM10": {
+   "file": "TBM10.parquet",
+   "rows": 1004594,
+   "bytes": 14237312,
+   "sha256": "333673b104d0c8ae51794f7fa3604fd27342e25ce0a9b4cfb9c0e0193e7490d4",
+   "windows": {
+    "30": {
+     "full_run_view": 97002,
+     "boring_view": 89014,
+     "steady_view": 78636
+    },
+    "60": {
+     "full_run_view": 98780,
+     "boring_view": 88963,
+     "steady_view": 78297
+    },
+    "120": {
+     "full_run_view": 91203,
+     "boring_view": 78771,
+     "steady_view": 69047
+    }
+   },
+   "checksums": {
+    "machine": {
+     "nunique": 1
+    },
+    "stream": {
+     "nunique": 2
+    },
+    "project": {
+     "nunique": 1
+    },
+    "file_status": {
+     "nunique": 3
+    },
+    "source_id": {
+     "nan": 0,
+     "sum": 158713766.0
+    },
+    "row": {
+     "nan": 0,
+     "sum": 2185494280.0
+    },
+    "F": {
+     "nan": 0,
+     "sum": 5021463946.355727
+    },
+    "T": {
+     "nan": 0,
+     "sum": 712630524.7431356
+    },
+    "n": {
+     "nan": 21735,
+     "sum": 1074185.7413402654
+    },
+    "v": {
+     "nan": 0,
+     "sum": 14574384.955840291
+    },
+    "p": {
+     "nan": 1,
+     "sum": 2995167.430271082
+    },
+    "n_source": {
+     "nunique": 3
+    },
+    "state_boring": {
+     "nan": 0,
+     "sum": 198257.0
+    },
+    "state_cutter": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "state_thrust": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "state_regrip": {
+     "nan": 1004594,
+     "sum": 0.0
+    },
+    "dt_prev_s": {
+     "nan": 1,
+     "sum": 37693330.0
+    },
+    "active": {
+     "nan": 0,
+     "sum": 195649.0
+    },
+    "valid_core": {
+     "nan": 0,
+     "sum": 966619.0
+    },
+    "q_time_backward": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_coarse": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_time_conflict": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_neg": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_core_missing": {
+     "nan": 0,
+     "sum": 21735.0
+    },
+    "q_n_invalid": {
+     "nan": 0,
+     "sum": 21891.0
+    },
+    "q_v_high": {
+     "nan": 0,
+     "sum": 2887.0
+    },
+    "q_T_high": {
+     "nan": 0,
+     "sum": 9.0
+    },
+    "q_F_high": {
+     "nan": 0,
+     "sum": 0.0
+    },
+    "q_pnv_off": {
+     "nan": 0,
+     "sum": 7.0
+    },
+    "q_v_invalid_file": {
+     "nan": 0,
+     "sum": 16542.0
+    },
+    "seg_no": {
+     "nan": 0,
+     "sum": 329184553.0
+    },
+    "phase": {
+     "nan": 0,
+     "sum": 400136.0
+    },
+    "op_state": {
+     "nan": 0,
+     "sum": 1605150.0
+    },
+    "view_boring": {
+     "nan": 0,
+     "sum": 186141.0
+    },
+    "view_strict": {
+     "nan": 0,
+     "sum": 175959.0
+    },
+    "view_steady": {
+     "nan": 0,
+     "sum": 165553.0
+    },
+    "run_id": {
+     "nan": 0,
+     "sum": 6427615321.0
+    },
+    "win30_pos": {
+     "nan": 0,
+     "sum": 38113818521.0
+    },
+    "win30_level": {
+     "nan": 0,
+     "sum": 264652.0
+    },
+    "win60_pos": {
+     "nan": 0,
+     "sum": 43297768142.0
+    },
+    "win60_level": {
+     "nan": 0,
+     "sum": 266040.0
+    },
+    "win120_pos": {
+     "nan": 0,
+     "sum": 35376859320.0
+    },
+    "win120_level": {
+     "nan": 0,
+     "sum": 239021.0
+    }
+   }
+  }
+ }
+}

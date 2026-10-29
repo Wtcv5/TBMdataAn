@@ -106,3 +106,17 @@ python -u analysis/p2_review_score.py --sheet outputs/segments_v1/review/<填好
 
 规则和参数在`p2_segment.py`开头的`PARAMS`并写入`manifest.json`。一个段是机器自己的掘进状态为开的连续行（TBM5在2023年前半段取推进工作状态等于3，两个状态都缺的行取信号），读数间隔不超过`max_gap_s`，且没有推力不大于0达`interrupt_s`的行；长段（≥`long_s`）按推力和推进速度达到本段稳定水平的90%和80%划分上升、稳定、下降。阶段码：0段外、1上升、2稳定、3下降、4段内但未命名阶段；运行状态：0掘进、1刀盘在转而不掘进、2刀盘不转、3转速缺失。标签与v1行序相同，`pd.concat([v1, labels[['seg_no','phase','op_state']]], axis=1)`即可使用。
 
+
+## 规范分析数据集v1（P3）
+
+路线图第四步：建立全运行与连续掘进两种数据视图。数据卡见[规范分析数据集v1数据卡](outputs/规范分析数据集v1数据卡.md)。输入是v1（`outputs/standard_v1/`）和P2的段表与逐行标签（`outputs/segments_v1/`），输出在`outputs/analysis_v1/`：每台机器一个parquet文件（不纳入Git，约10秒重建，逐字节一致）以及字典、清单、视图与窗口汇总、窗口账目、对已提交基线窗口的复现与对账、敏感性和验证结果。
+
+```powershell
+python -u analysis/p3_build.py         # 读v1和P2，写 outputs/analysis_v1/
+python -u analysis/p3_regress.py       # 用同一套窗口函数重建已提交的27个基线数据集，并与分析数据集对账（需要outputs/canonical与outputs/datasets）
+python -u analysis/p3_checks.py        # 读数间隔上限、目标规则、起点条件和视图定义的敏感性
+python -u analysis/p3_verify.py        # 182项检查：与v1和P2逐行对应、独立重算视图、游程、窗口和汇总、逐字节重建
+python -u analysis/smoke_test_p3.py    # 合成数据自检，无需原始数据，含十五种篡改必须被验证脚本发现
+```
+
+数据集是v1的全部行（行序不变）加列：P2的`seg_no`、`phase`、`op_state`，视图标志`view_boring`（P2段表中长段、找到稳定阶段、不停滞的段）、`view_strict`（再要求两端不被截断）、`view_steady`（其中阶段码2的行），游程编号`run_id`，以及每个步长的`win<h>_pos`（以该行为起点的窗口的目标行位置，-1为没有窗口）和`win<h>_level`（0没有，1全运行，2也在连续掘进视图，3也在稳定段视图）。窗口规则在`p3_windows.py`，与`build_baselines.py`的规则等价（4个读数的历史、30/60/120秒、间隔不超过60秒、起点活动、目标晚不超过5秒），`samples()`按已提交基线数据集的布局取出窗口；之后的基线应当从这里取窗口，不要再各写一份。
